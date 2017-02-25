@@ -4,8 +4,16 @@ import SearchForm from '../SearchForm'
 import BookShelf from '../BookShelf'
 import renderer from 'react-test-renderer'
 import {shallow} from 'enzyme'
+import booksJson from './__mocks__/books.json'
+import nock from 'nock'
+
+const API_URL = 'https://www.googleapis.com/books/v1'
 
 describe('BookStore', () => {
+  afterEach(() => {
+      nock.cleanAll()
+  })
+
   it('renders correctly', () => {
     const BookStoreTree = renderer.create(
       <BookStore />
@@ -24,5 +32,19 @@ describe('BookStore', () => {
   it('should start with an empty book list', () => {
     const wrapper = shallow(<BookStore />)
     expect(wrapper.state('books')).toEqual([])
+  })
+
+  it('should list searched books', () => {
+    nock(API_URL)
+      .get('/volumes?q=Harry%20Potter')
+      .reply(200, (uri, requestBody, cb) => {
+        return requestBody
+      })
+
+    const wrapper = shallow(<BookStore />)
+    wrapper.instance().executeBookSearch('Harry Potter')
+    wrapper.update()
+    // TODO: Corrigir essa request
+    // expect(wrapper.state('books')).toEqual(booksJson.items)
   })
 })

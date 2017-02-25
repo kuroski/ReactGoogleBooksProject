@@ -9,13 +9,21 @@ class BookStore extends Component {
     this.state = {
       books: []
     }
+
+    this.executeBookSearch = this.executeBookSearch.bind(this)
+  }
+
+  executeBookSearch(term) {
+    booksApi.all(term)
+      .then(books => {
+        this.setState({
+          books: [].concat(this.state.books).concat(books.items)
+        })
+      })
   }
 
   componentDidMount () {
-    booksApi.all('Harry Potter')
-      .then((result) => {
-        console.log(result)
-      })
+    this.executeBookSearch('Harry Potter')
   }
 
   render() {
