@@ -5,14 +5,11 @@ const propTypes = {
 }
 
 class SearchForm extends Component {
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     return (
       <div className="SearchForm">
-        Hello Search form
+        <input />
+        <button>Add</button>
       </div>
     )
   }

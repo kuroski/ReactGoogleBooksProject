@@ -3,7 +3,10 @@ exports[`BookStore renders correctly 1`] = `
   className="BookStore">
   <div
     className="SearchForm">
-    Hello Search form
+    <input />
+    <button>
+      Add
+    </button>
   </div>
   <div
     className="BookShelf">

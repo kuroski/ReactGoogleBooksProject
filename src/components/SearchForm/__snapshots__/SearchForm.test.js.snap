@@ -1,6 +1,9 @@
 exports[`SearchForm renders correctly 1`] = `
 <div
   className="SearchForm">
-  Hello Search form
+  <input />
+  <button>
+    Add
+  </button>
 </div>
 `;
