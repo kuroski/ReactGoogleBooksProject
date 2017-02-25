@@ -14,7 +14,7 @@ class BookStore extends Component {
   }
 
   executeBookSearch(term) {
-    booksApi.all(term)
+    return booksApi.all(term)
       .then(books => {
         this.setState({
           books: [].concat(this.state.books).concat(books.items)

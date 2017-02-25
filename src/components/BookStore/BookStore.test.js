@@ -42,9 +42,9 @@ describe('BookStore', () => {
 
     const wrapper = shallow(<BookStore />)
     wrapper.instance().executeBookSearch('Harry Potter')
-    wrapper.update()
-    // TODO: Corrigir essa request
-    // expect(wrapper.state('books')).toEqual(booksJson.items)
+      .then(data => {
+        expect(wrapper.state('books')).toEqual(booksJson.items)
+      })
   })
 
   it('passes executeBookSearch to SearchForm', () => {
@@ -62,7 +62,8 @@ describe('BookStore', () => {
     const wrapper = shallow(<BookStore />)
     const searchForm = wrapper.find(SearchForm)
     searchForm.prop('onSubmit')('HarryPotter')
-    // TODO: Corrigir essa request
-    // expect(wrapper.state('books')).toEqual(booksJson.items)
+      .then(data => {
+        expect(wrapper.state('books')).toEqual(booksJson.items)
+      })
   })
 })
