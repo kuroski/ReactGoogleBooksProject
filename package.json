@@ -6,9 +6,11 @@
     "enzyme": "^2.7.1",
     "enzyme-matchers": "^2.1.2",
     "jest-enzyme": "^2.1.2",
+    "nock": "^9.0.7",
     "react-addons-test-utils": "^15.4.2",
     "react-scripts": "0.9.0",
-    "react-test-renderer": "^15.4.2"
+    "react-test-renderer": "^15.4.2",
+    "superagent": "^3.5.0"
   },
   "dependencies": {
     "react": "^15.4.2",
