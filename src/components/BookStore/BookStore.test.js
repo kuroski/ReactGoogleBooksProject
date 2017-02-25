@@ -20,4 +20,9 @@ describe('BookStore', () => {
       <BookShelf />
     ])).toEqual(true)
   })
+
+  it('should start with an empty book list', () => {
+    const wrapper = shallow(<BookStore />)
+    expect(wrapper.state('books')).toEqual([])
+  })
 })
