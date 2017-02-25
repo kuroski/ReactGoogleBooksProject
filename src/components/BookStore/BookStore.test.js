@@ -23,8 +23,9 @@ describe('BookStore', () => {
 
   it('should render a SearchForm and a BookShelf', () => {
     const wrapper = shallow(<BookStore />)
+    const executeBookSearch = wrapper.instance().executeBookSearch
     expect(wrapper.containsAllMatchingElements([
-      <SearchForm />,
+      <SearchForm onSubmit={executeBookSearch} />,
       <BookShelf />
     ])).toEqual(true)
   })
@@ -37,13 +38,30 @@ describe('BookStore', () => {
   it('should list searched books', () => {
     nock(API_URL)
       .get('/volumes?q=Harry%20Potter')
-      .reply(200, (uri, requestBody, cb) => {
-        return requestBody
-      })
+      .reply(200, booksJson)
 
     const wrapper = shallow(<BookStore />)
     wrapper.instance().executeBookSearch('Harry Potter')
     wrapper.update()
+    // TODO: Corrigir essa request
+    // expect(wrapper.state('books')).toEqual(booksJson.items)
+  })
+
+  it('passes executeBookSearch to SearchForm', () => {
+    const wrapper = shallow(<BookStore />)
+    const searchForm = wrapper.find(SearchForm)
+    const executeBookSearch = wrapper.instance().executeBookSearch
+    expect(searchForm.prop('onSubmit')).toEqual(executeBookSearch)
+  })
+
+  it('passes a bound executeBookSearch to SearchForm', () => {
+    nock(API_URL)
+      .get('/volumes?q=Harry%20Potter')
+      .reply(200, booksJson)
+
+    const wrapper = shallow(<BookStore />)
+    const searchForm = wrapper.find(SearchForm)
+    searchForm.prop('onSubmit')('HarryPotter')
     // TODO: Corrigir essa request
     // expect(wrapper.state('books')).toEqual(booksJson.items)
   })

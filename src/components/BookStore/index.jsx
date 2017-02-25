@@ -22,14 +22,10 @@ class BookStore extends Component {
       })
   }
 
-  componentDidMount () {
-    this.executeBookSearch('Harry Potter')
-  }
-
   render() {
     return (
       <div className="BookStore">
-        <SearchForm />
+        <SearchForm onSubmit={this.executeBookSearch} />
         <BookShelf />
       </div>
     )
