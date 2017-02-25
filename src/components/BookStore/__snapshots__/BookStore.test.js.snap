@@ -3,7 +3,9 @@ exports[`BookStore renders correctly 1`] = `
   className="BookStore">
   <div
     className="SearchForm">
-    <input />
+    <input
+      onChange={[Function]}
+      value="" />
     <button>
       Add
     </button>

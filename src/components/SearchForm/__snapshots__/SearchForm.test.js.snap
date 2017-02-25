@@ -1,7 +1,9 @@
 exports[`SearchForm renders correctly 1`] = `
 <div
   className="SearchForm">
-  <input />
+  <input
+    onChange={[Function]}
+    value="" />
   <button>
     Add
   </button>

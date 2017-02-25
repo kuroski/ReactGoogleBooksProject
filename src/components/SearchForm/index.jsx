@@ -5,10 +5,22 @@ const propTypes = {
 }
 
 class SearchForm extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      term: ''
+    }
+    this.setTerm = this.setTerm.bind(this)
+  }
+
+  setTerm(event) {
+    this.setState({term: event.target.value})
+  }
+
   render() {
     return (
       <div className="SearchForm">
-        <input />
+        <input value={this.state.term} onChange={this.setTerm} />
         <button>Add</button>
       </div>
     )
