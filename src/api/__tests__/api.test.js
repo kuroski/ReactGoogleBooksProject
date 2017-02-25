@@ -11,9 +11,9 @@ describe('API', () => {
 
     it('should retrieve a book list from API call', () => {
         const googleBooksApi = nock(API_URL)
-            .get('/volumes?q=Harry%20Potter&maxResults=2')
+            .get('/volumes?q=Harry%20Potter')
             .reply(200, booksJson);
-        return books.all('Harry Potter', 2)
+        return books.all('Harry Potter')
             .then((books) => {
                 expect(books).toEqual(booksJson)
                 googleBooksApi.done()

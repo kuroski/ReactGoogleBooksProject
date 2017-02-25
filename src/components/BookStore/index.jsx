@@ -12,7 +12,7 @@ class BookStore extends Component {
   }
 
   componentDidMount () {
-    booksApi.all('Harry Potter', 2)
+    booksApi.all('Harry Potter')
       .then((result) => {
         console.log(result)
       })
