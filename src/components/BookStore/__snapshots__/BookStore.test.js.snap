@@ -1,0 +1,13 @@
+exports[`BookStore renders correctly 1`] = `
+<div
+  className="BookStore">
+  <div
+    className="SearchForm">
+    Hello Search form
+  </div>
+  <div
+    className="BookShelf">
+    Hello Book Shelf
+  </div>
+</div>
+`;

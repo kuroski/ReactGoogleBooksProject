@@ -1,6 +1,0 @@
-exports[`BookStore renders correctly 1`] = `
-<div
-  className="BookStore">
-  Hello Bookstore
-</div>
-`;

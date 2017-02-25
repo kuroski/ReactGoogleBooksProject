@@ -1,0 +1,6 @@
+exports[`BookShelf renders correctly 1`] = `
+<div
+  className="BookShelf">
+  Hello Book Shelf
+</div>
+`;
