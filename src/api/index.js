@@ -6,7 +6,7 @@ export function all(term) {
     return request.get(`${API_URL}/volumes`)
         .query({
             q: term
-        }).then((result) => {
+        }).then(result => {
             return result.body
-        })
+        }).catch(error => {})
 }

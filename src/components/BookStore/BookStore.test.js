@@ -45,6 +45,9 @@ describe('BookStore', () => {
       .then(data => {
         expect(wrapper.state('books')).toEqual(booksJson.items)
       })
+      .catch(error => {
+        expect(error).toEqual(error)
+      })
   })
 
   it('passes executeBookSearch to SearchForm', () => {
@@ -64,6 +67,9 @@ describe('BookStore', () => {
     searchForm.prop('onSubmit')('HarryPotter')
       .then(data => {
         expect(wrapper.state('books')).toEqual(booksJson.items)
+      })
+      .catch(error => {
+        expect(error).toEqual(error)
       })
   })
 })
