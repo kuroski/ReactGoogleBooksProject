@@ -29,7 +29,7 @@ class BookStore extends Component {
     return booksApi.all(term)
       .then(books => {
         this.setState({
-          books: [].concat(this.state.books).concat(books.items)
+          books: books.items
         })
       })
   }
