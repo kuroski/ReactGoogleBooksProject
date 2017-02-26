@@ -38,6 +38,6 @@ describe('SearchForm', () => {
     searchButton.simulate('click')
 
     expect(searchButtonSpy).toHaveBeenCalledTimes(1)
-    expect(wrapper.state('term')).toEqual(searchTerm)
+    expect(searchButtonSpy).toHaveBeenCalledWith(searchTerm)
   })
 })

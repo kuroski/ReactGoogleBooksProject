@@ -19,7 +19,7 @@ class SearchForm extends Component {
   }
 
   executeSearch() {
-    this.props.onSubmit(this.state.text)
+    this.props.onSubmit(this.state.term)
   }
 
   render() {
