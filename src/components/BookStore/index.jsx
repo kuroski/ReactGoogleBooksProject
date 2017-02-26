@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import SearchForm from '../SearchForm'
 import BookShelf from '../BookShelf'
+import Pagination from '../Pagination'
 import * as booksApi from '../../api'
 import {FormattedMessage} from 'react-intl'
 
@@ -9,7 +10,9 @@ class BookStore extends Component {
     super(props)
     this.state = {
       books: [],
-      message: ''
+      message: '',
+      currentSearchTerm: '',
+      currentPage: 0
     }
 
     this.executeBookSearch = this.executeBookSearch.bind(this)
@@ -29,7 +32,9 @@ class BookStore extends Component {
     return booksApi.all(term)
       .then(books => {
         this.setState({
-          books: books.items
+          books: books.items,
+          currentSearchTerm: term,
+          currentPage: 0
         })
       })
   }
@@ -40,6 +45,7 @@ class BookStore extends Component {
         <div>{this.state.message}</div>
         <SearchForm onSubmit={this.executeBookSearch} />
         <BookShelf books={this.state.books} />
+        <Pagination />
       </div>
     )
   }
