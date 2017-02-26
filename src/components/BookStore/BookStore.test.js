@@ -29,7 +29,7 @@ describe('BookStore', () => {
     expect(wrapper.containsAllMatchingElements([
       <SearchForm onSubmit={executeBookSearch} />,
       <BookShelf books={[]} />,
-      <Pagination />
+      <Pagination currentPage={0} pageCount={0} onPageChange={executePageChange} />
     ])).toEqual(true)
   })
 

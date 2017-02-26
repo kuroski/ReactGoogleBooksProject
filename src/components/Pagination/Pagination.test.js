@@ -5,7 +5,7 @@ import renderer from 'react-test-renderer'
 describe('BookStore', () => {
   it('renders correctly', () => {
     const PaginationTree = renderer.create(
-      <Pagination />
+      <Pagination currentPage={0} pageCount={0} onPageChange={() => ''} />
     ).toJSON()
     expect(PaginationTree).toMatchSnapshot()
   })

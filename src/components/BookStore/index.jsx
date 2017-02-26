@@ -12,10 +12,12 @@ class BookStore extends Component {
       books: [],
       message: '',
       currentSearchTerm: '',
-      currentPage: 0
+      currentPage: 0,
+      currentPageCount: 0
     }
 
     this.executeBookSearch = this.executeBookSearch.bind(this)
+    this.executePageChange = this.executePageChange.bind(this)
   }
 
   executeBookSearch(term) {
@@ -39,13 +41,16 @@ class BookStore extends Component {
       })
   }
 
+  executePageChange(to) {
+  }
+
   render() {
     return (
       <div className="BookStore">
         <div>{this.state.message}</div>
         <SearchForm onSubmit={this.executeBookSearch} />
         <BookShelf books={this.state.books} />
-        <Pagination />
+        <Pagination currentPage={this.state.currentPage} pageCount={this.state.currentPageCount} onPageChange={this.executePageChange} />
       </div>
     )
   }
