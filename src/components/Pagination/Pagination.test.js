@@ -11,7 +11,12 @@ describe('BookStore', () => {
     expect(PaginationTree).toMatchSnapshot()
   })
 
-  it('should show pages elements', () => {
+  it('should render zero pages', () => {
+    const wrapper = shallow(<Pagination currentPage={0} pageCount={0} onPageChange={() => ''} />)
+    expect(wrapper.find('.c-pagination__page')).toHaveLength(0)
+  })
+
+  it('should render some pages', () => {
     const wrapper = shallow(<Pagination currentPage={0} pageCount={10} onPageChange={() => ''} />)
     expect(wrapper.find('.c-pagination__page')).toHaveLength(10)
     expect(wrapper.find('.c-pagination__page').first().hasClass('c-pagination__page--current')).toEqual(true)
