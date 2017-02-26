@@ -3,7 +3,7 @@ import BookStore from './'
 import SearchForm from '../SearchForm'
 import BookShelf from '../BookShelf'
 import renderer from 'react-test-renderer'
-import {shallow} from 'enzyme'
+import {shallow, mount} from 'enzyme'
 import {shallowWithIntl} from '../../helpers/intl-enzyme-test-helper'
 import booksJson from '../../test/__mocks__/books.json'
 import nock from 'nock'
@@ -78,6 +78,18 @@ describe('BookStore', () => {
       })
       .catch(error => {
         expect(error).toEqual(error)
+      })
+  })
+
+  it('renders the books', () => {
+    nock(API_URL)
+      .get('/volumes?q=Harry%20Potter')
+      .reply(200, booksJson)
+
+    const wrapper = mount(<BookStore />)
+    wrapper.instance().executeBookSearch('Harry Potter')
+      .then(() => {
+        expect(wrapper.find('li')).toHaveLength(2)
       })
   })
 })

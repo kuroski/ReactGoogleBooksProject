@@ -39,7 +39,7 @@ class BookStore extends Component {
       <div className="BookStore">
         <div>{this.state.message}</div>
         <SearchForm onSubmit={this.executeBookSearch} />
-        <BookShelf />
+        <BookShelf books={this.state.books} />
       </div>
     )
   }

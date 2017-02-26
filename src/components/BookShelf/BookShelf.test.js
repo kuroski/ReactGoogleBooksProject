@@ -2,12 +2,12 @@ import React from 'react'
 import BookShelf from './'
 import renderer from 'react-test-renderer'
 import {shallow} from 'enzyme'
-import booksJson from './__mocks__/books.json'
+import booksJson from '../../test/__mocks__/books.json'
 
 describe('BookShelf', () => {
   it('renders correctly', () => {
     const BookShelfTree = renderer.create(
-      <BookShelf />
+      <BookShelf books={[]} />
     ).toJSON()
     expect(BookShelfTree).toMatchSnapshot()
   })
@@ -17,13 +17,9 @@ describe('BookShelf', () => {
     expect(wrapper.find('li')).toHaveLength(0)
   })
 
-  it('should render undefined books', () => {
-    const wrapper = shallow(<BookShelf books={undefined} />)
-    expect(wrapper.find('li')).toHaveLength(0)
-  })
-
   it('should render some books', () => {
-    const wrapper = shallow(<BookShelf books={booksJson} />)
+    const booksItems = booksJson.items
+    const wrapper = shallow(<BookShelf books={booksItems} />)
     expect(wrapper.find('li')).toHaveLength(2)
   })
 })
