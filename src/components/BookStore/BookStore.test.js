@@ -7,8 +7,7 @@ import {shallow, mount} from 'enzyme'
 import {shallowWithIntl} from '../../helpers/intl-enzyme-test-helper'
 import booksJson from '../../test/__mocks__/books.json'
 import nock from 'nock'
-
-const API_URL = 'https://www.googleapis.com/books/v1'
+import {API_URL, HARRY_POTTER_URL} from '../../test/__mocks__/constants'
 
 describe('BookStore', () => {
   afterEach(() => {
@@ -38,7 +37,7 @@ describe('BookStore', () => {
 
   it('should list searched books', () => {
     nock(API_URL)
-      .get('/volumes?q=Harry%20Potter')
+      .get(HARRY_POTTER_URL)
       .reply(200, booksJson)
 
     const wrapper = shallow(<BookStore />)
@@ -67,7 +66,7 @@ describe('BookStore', () => {
 
   it('passes a bound executeBookSearch to SearchForm', () => {
     nock(API_URL)
-      .get('/volumes?q=Harry%20Potter')
+      .get(HARRY_POTTER_URL)
       .reply(200, booksJson)
 
     const wrapper = shallow(<BookStore />)
@@ -83,7 +82,7 @@ describe('BookStore', () => {
 
   it('renders the books', () => {
     nock(API_URL)
-      .get('/volumes?q=Harry%20Potter')
+      .get(HARRY_POTTER_URL)
       .reply(200, booksJson)
 
     const wrapper = mount(<BookStore />)

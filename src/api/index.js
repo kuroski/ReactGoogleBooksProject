@@ -2,10 +2,12 @@ import request from 'superagent'
 
 const API_URL = 'https://www.googleapis.com/books/v1'
 
-export function all(term) {
+export function all(term, page = 0) {
     return request.get(`${API_URL}/volumes`)
         .query({
-            q: term
+            q: term,
+            maxResults: 30,
+            startIndex: page
         }).then(result => {
             return result.body
         }).catch(error => {})
