@@ -15,7 +15,7 @@ describe('SearchForm', () => {
     const wrapper = shallow(<SearchForm onSubmit={() => ''} />)
     expect(wrapper.containsAllMatchingElements([
       <input />,
-      <button>Add</button>
+      <button>Search</button>
     ])).toEqual(true)
   })
 
@@ -26,5 +26,18 @@ describe('SearchForm', () => {
     input.simulate('change', {target: {value: term}})
     expect(wrapper.state('term')).toEqual(term)
     expect(input.prop('value')).toEqual(term)
+  })
+
+  it('should call onSubmit when Search button is clicked', () => {
+    const searchTerm = 'Harry Potter'
+    const searchButtonSpy = jest.fn()
+    const wrapper = shallow(<SearchForm onSubmit={searchButtonSpy} />)
+    wrapper.setState({term: searchTerm})
+    const searchButton = wrapper.find('button')
+
+    searchButton.simulate('click')
+
+    expect(searchButtonSpy).toHaveBeenCalledTimes(1)
+    expect(wrapper.state('term')).toEqual(searchTerm)
   })
 })

@@ -4,8 +4,9 @@ exports[`SearchForm renders correctly 1`] = `
   <input
     onChange={[Function]}
     value="" />
-  <button>
-    Add
+  <button
+    onClick={[Function]}>
+    Search
   </button>
 </div>
 `;
