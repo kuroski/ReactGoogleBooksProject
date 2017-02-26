@@ -18,16 +18,17 @@ class SearchForm extends Component {
     this.setState({term: event.target.value})
   }
 
-  executeSearch() {
+  executeSearch(event) {
+    event.preventDefault()
     this.props.onSubmit(this.state.term)
   }
 
   render() {
     return (
-      <div className="SearchForm">
+      <form className="SearchForm">
         <input value={this.state.term} onChange={this.setTerm} />
         <button onClick={this.executeSearch}>Search</button>
-      </div>
+      </form>
     )
   }
 }
