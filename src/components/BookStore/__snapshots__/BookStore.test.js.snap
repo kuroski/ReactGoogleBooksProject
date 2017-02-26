@@ -4,7 +4,7 @@ exports[`BookStore renders correctly 1`] = `
   <div>
     
   </div>
-  <div
+  <form
     className="SearchForm">
     <input
       onChange={[Function]}
@@ -13,7 +13,7 @@ exports[`BookStore renders correctly 1`] = `
       onClick={[Function]}>
       Search
     </button>
-  </div>
+  </form>
   <div
     className="BookShelf">
     Hello Book Shelf
