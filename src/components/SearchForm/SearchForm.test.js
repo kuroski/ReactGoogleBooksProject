@@ -35,7 +35,7 @@ describe('SearchForm', () => {
     wrapper.setState({term: searchTerm})
     const searchButton = wrapper.find('button')
 
-    searchButton.simulate('click')
+    searchButton.simulate('click', new Event('Form'))
 
     expect(searchButtonSpy).toHaveBeenCalledTimes(1)
     expect(searchButtonSpy).toHaveBeenCalledWith(searchTerm)

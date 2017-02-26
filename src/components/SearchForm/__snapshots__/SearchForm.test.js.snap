@@ -1,5 +1,5 @@
 exports[`SearchForm renders correctly 1`] = `
-<div
+<form
   className="SearchForm">
   <input
     onChange={[Function]}
@@ -8,5 +8,5 @@ exports[`SearchForm renders correctly 1`] = `
     onClick={[Function]}>
     Search
   </button>
-</div>
+</form>
 `;
