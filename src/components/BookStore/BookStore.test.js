@@ -50,6 +50,12 @@ describe('BookStore', () => {
       })
   })
 
+  it('should throw an error when searching without a term', () => {
+    const wrapper = shallow(<BookStore />)
+    expect(() => wrapper.instance().executeBookSearch()).toThrowError('No search term provided')
+    expect(wrapper.contains('Nenhum termo de pesquisa foi digitado')).toEqual(true)
+  })
+
   it('passes executeBookSearch to SearchForm', () => {
     const wrapper = shallow(<BookStore />)
     const searchForm = wrapper.find(SearchForm)

@@ -7,13 +7,21 @@ class BookStore extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      books: []
+      books: [],
+      message: ''
     }
 
     this.executeBookSearch = this.executeBookSearch.bind(this)
   }
 
   executeBookSearch(term) {
+    if(!term) {
+      this.setState({
+        message: 'Nenhum termo de pesquisa foi digitado'
+      })
+      throw new Error('No search term provided')
+    }
+
     return booksApi.all(term)
       .then(books => {
         this.setState({
@@ -25,6 +33,7 @@ class BookStore extends Component {
   render() {
     return (
       <div className="BookStore">
+        <div>{this.state.message}</div>
         <SearchForm onSubmit={this.executeBookSearch} />
         <BookShelf />
       </div>

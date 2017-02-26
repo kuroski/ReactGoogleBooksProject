@@ -1,6 +1,9 @@
 exports[`BookStore renders correctly 1`] = `
 <div
   className="BookStore">
+  <div>
+    
+  </div>
   <div
     className="SearchForm">
     <input

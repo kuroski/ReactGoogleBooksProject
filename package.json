@@ -9,13 +9,13 @@
     "nock": "^9.0.7",
     "react-addons-test-utils": "^15.4.2",
     "react-scripts": "0.9.0",
-    "react-test-renderer": "^15.4.2",
-    "superagent": "^3.5.0"
+    "react-test-renderer": "^15.4.2"
   },
   "dependencies": {
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
-    "react-router": "^3.0.2"
+    "react-router": "^3.0.2",
+    "superagent": "^3.5.0"
   },
   "scripts": {
     "start": "react-scripts start",
