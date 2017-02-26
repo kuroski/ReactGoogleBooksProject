@@ -13,7 +13,7 @@ class BookStore extends Component {
       message: '',
       currentSearchTerm: '',
       currentPage: 0,
-      currentPageCount: 0
+      pageCount: 0
     }
 
     this.executeBookSearch = this.executeBookSearch.bind(this)
@@ -28,15 +28,14 @@ class BookStore extends Component {
       return
     }
 
-    this.setState({
-      message: ''
-    })
     return booksApi.all(term)
       .then(books => {
         this.setState({
+          message: '',
           books: books.items,
           currentSearchTerm: term,
-          currentPage: 0
+          currentPage: 0,
+          pageCount: Math.ceil(books.totalItems / 30)
         })
       })
   }
@@ -50,7 +49,7 @@ class BookStore extends Component {
         <div>{this.state.message}</div>
         <SearchForm onSubmit={this.executeBookSearch} />
         <BookShelf books={this.state.books} />
-        <Pagination currentPage={this.state.currentPage} pageCount={this.state.currentPageCount} onPageChange={this.executePageChange} />
+        <Pagination currentPage={this.state.currentPage} pageCount={this.state.pageCount} onPageChange={this.executePageChange} />
       </div>
     )
   }

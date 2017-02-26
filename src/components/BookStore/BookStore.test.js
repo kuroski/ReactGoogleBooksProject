@@ -107,6 +107,7 @@ describe('BookStore', () => {
         expect(wrapper.find('li')).toHaveLength(2)
         expect(wrapper.state('currentSearchTerm')).toEqual(searchTerm)
         expect(wrapper.state('currentPage')).toEqual(0)
+        expect(wrapper.state('pageCount')).toEqual(18)
       })
   })
 })

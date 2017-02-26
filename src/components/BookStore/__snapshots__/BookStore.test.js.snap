@@ -15,8 +15,6 @@ exports[`BookStore renders correctly 1`] = `
     </button>
   </form>
   <div
-    className="Pagination">
-    Pagination
-  </div>
+    className="c-pagination" />
 </div>
 `;
