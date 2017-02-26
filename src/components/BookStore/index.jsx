@@ -18,6 +18,7 @@ class BookStore extends Component {
 
     this.executeBookSearch = this.executeBookSearch.bind(this)
     this.executePageChange = this.executePageChange.bind(this)
+    this.searchAllBooks = this.searchAllBooks.bind(this)
   }
 
   executeBookSearch(term) {
@@ -28,19 +29,24 @@ class BookStore extends Component {
       return
     }
 
-    return booksApi.all(term)
+    return this.searchAllBooks(term)
+  }
+
+  executePageChange(toPage) {
+    return this.searchAllBooks(this.state.currentSearchTerm, toPage)
+  }
+
+  searchAllBooks(term, page = 0) {
+    return booksApi.all(term, page)
       .then(books => {
         this.setState({
           message: '',
           books: books.items,
           currentSearchTerm: term,
-          currentPage: 0,
+          currentPage: page,
           pageCount: Math.ceil(books.totalItems / 30)
         })
       })
-  }
-
-  executePageChange(to) {
   }
 
   render() {

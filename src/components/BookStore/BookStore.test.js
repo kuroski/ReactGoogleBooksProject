@@ -8,7 +8,7 @@ import {shallow, mount} from 'enzyme'
 import {shallowWithIntl} from '../../helpers/intl-enzyme-test-helper'
 import booksJson from '../../test/__mocks__/books.json'
 import nock from 'nock'
-import {API_URL, HARRY_POTTER_URL} from '../../test/__mocks__/constants'
+import {API_URL, HARRY_POTTER_URL, HARRY_POTTER_URL_SECOND_PAGE} from '../../test/__mocks__/constants'
 
 describe('BookStore', () => {
   afterEach(() => {
@@ -108,6 +108,29 @@ describe('BookStore', () => {
         expect(wrapper.state('currentSearchTerm')).toEqual(searchTerm)
         expect(wrapper.state('currentPage')).toEqual(0)
         expect(wrapper.state('pageCount')).toEqual(18)
+      })
+  })
+
+  it('passes executePageChange to Pagination component', () => {
+    const wrapper = shallow(<BookStore />)
+    const pagination = wrapper.find(Pagination)
+    const executePageChange = wrapper.instance().executePageChange
+    expect(pagination.prop('onPageChange')).toEqual(executePageChange)
+  })
+
+  it('passes a bound executePageChange to Pagination component', () => {
+    nock(API_URL)
+      .get(HARRY_POTTER_URL_SECOND_PAGE)
+      .reply(200, booksJson)
+
+    const wrapper = shallow(<BookStore />)
+    const pagination = wrapper.find(Pagination)
+    pagination.prop('onPageChange')(1)
+      .then(data => {
+        expect(wrapper.state('books')).toEqual(booksJson.items)
+      })
+      .catch(error => {
+        expect(error).toEqual(error)
       })
   })
 })
