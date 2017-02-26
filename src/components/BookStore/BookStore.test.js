@@ -8,7 +8,7 @@ import {shallow, mount} from 'enzyme'
 import {shallowWithIntl} from '../../helpers/intl-enzyme-test-helper'
 import booksJson from '../../test/__mocks__/books.json'
 import nock from 'nock'
-import {API_URL, HARRY_POTTER_URL, HARRY_POTTER_URL_SECOND_PAGE} from '../../test/__mocks__/constants'
+import {API_URL, BOOKS_PER_PAGE, HARRY_POTTER_URL, HARRY_POTTER_URL_SECOND_PAGE} from '../../test/__mocks__/constants'
 
 describe('BookStore', () => {
   afterEach(() => {
@@ -107,7 +107,7 @@ describe('BookStore', () => {
         expect(wrapper.find('li')).toHaveLength(2)
         expect(wrapper.state('currentSearchTerm')).toEqual(searchTerm)
         expect(wrapper.state('currentPage')).toEqual(0)
-        expect(wrapper.state('pageCount')).toEqual(18)
+        expect(wrapper.state('pageCount')).toEqual(Math.ceil(booksJson.totalItems / BOOKS_PER_PAGE))
       })
   })
 

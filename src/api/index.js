@@ -6,7 +6,7 @@ export function all(term, page = 0) {
     return request.get(`${API_URL}/volumes`)
         .query({
             q: term,
-            maxResults: 30,
+            maxResults: 15,
             startIndex: page
         }).then(result => {
             return result.body

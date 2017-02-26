@@ -44,7 +44,7 @@ class BookStore extends Component {
           books: books.items,
           currentSearchTerm: term,
           currentPage: page,
-          pageCount: Math.ceil(books.totalItems / 30)
+          pageCount: Math.ceil(books.totalItems / 15)
         })
       })
   }
