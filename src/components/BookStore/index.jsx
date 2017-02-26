@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import SearchForm from '../SearchForm'
 import BookShelf from '../BookShelf'
 import * as booksApi from '../../api'
+import {FormattedMessage} from 'react-intl'
 
 class BookStore extends Component {
   constructor(props) {
@@ -17,11 +18,14 @@ class BookStore extends Component {
   executeBookSearch(term) {
     if(!term) {
       this.setState({
-        message: 'Nenhum termo de pesquisa foi digitado'
+        message: <FormattedMessage id="app.errors.nosearchtermprovided" defaultMessage="Nenhum termo de pesquisa foi digitado"></FormattedMessage>
       })
-      throw new Error('No search term provided')
+      return
     }
 
+    this.setState({
+      message: ''
+    })
     return booksApi.all(term)
       .then(books => {
         this.setState({

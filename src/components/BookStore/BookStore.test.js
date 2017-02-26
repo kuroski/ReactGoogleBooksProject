@@ -4,6 +4,7 @@ import SearchForm from '../SearchForm'
 import BookShelf from '../BookShelf'
 import renderer from 'react-test-renderer'
 import {shallow} from 'enzyme'
+import {shallowWithIntl} from '../../helpers/intl-enzyme-test-helper'
 import booksJson from './__mocks__/books.json'
 import nock from 'nock'
 
@@ -44,6 +45,7 @@ describe('BookStore', () => {
     wrapper.instance().executeBookSearch('Harry Potter')
       .then(data => {
         expect(wrapper.state('books')).toEqual(booksJson.items)
+        expect(wrapper.state('message')).toBeNull()
       })
       .catch(error => {
         expect(error).toEqual(error)
@@ -51,9 +53,9 @@ describe('BookStore', () => {
   })
 
   it('should throw an error when searching without a term', () => {
-    const wrapper = shallow(<BookStore />)
-    expect(() => wrapper.instance().executeBookSearch()).toThrowError('No search term provided')
-    expect(wrapper.contains('Nenhum termo de pesquisa foi digitado')).toEqual(true)
+    const wrapper = shallowWithIntl(<BookStore />)
+    wrapper.instance().executeBookSearch()
+    expect(wrapper.state('message').props.id).toEqual('app.errors.nosearchtermprovided')
   })
 
   it('passes executeBookSearch to SearchForm', () => {
