@@ -14,9 +14,7 @@ exports[`BookStore renders correctly 1`] = `
       Search
     </button>
   </form>
-  <div
-    className="BookShelf">
-    Hello Book Shelf
-  </div>
+  <ul
+    className="BookShelf" />
 </div>
 `;

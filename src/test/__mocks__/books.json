@@ -1,7 +1,8 @@
 {
     "kind": "books#volumes",
     "totalItems": 521,
-    "items": [{
+    "items": [
+        {
             "kind": "books#volume",
             "id": "K_yxDAAAQBAJ",
             "etag": "FO4EDC/dA7U",

@@ -1,6 +1,6 @@
 import nock from 'nock'
 import * as books from '../'
-import booksJson from './books.json'
+import booksJson from '../../test/__mocks__/books.json'
 
 const API_URL = 'https://www.googleapis.com/books/v1'
 

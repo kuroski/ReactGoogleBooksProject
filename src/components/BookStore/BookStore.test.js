@@ -5,7 +5,7 @@ import BookShelf from '../BookShelf'
 import renderer from 'react-test-renderer'
 import {shallow} from 'enzyme'
 import {shallowWithIntl} from '../../helpers/intl-enzyme-test-helper'
-import booksJson from './__mocks__/books.json'
+import booksJson from '../../test/__mocks__/books.json'
 import nock from 'nock'
 
 const API_URL = 'https://www.googleapis.com/books/v1'
@@ -27,7 +27,7 @@ describe('BookStore', () => {
     const executeBookSearch = wrapper.instance().executeBookSearch
     expect(wrapper.containsAllMatchingElements([
       <SearchForm onSubmit={executeBookSearch} />,
-      <BookShelf />
+      <BookShelf books={[]} />
     ])).toEqual(true)
   })
 
