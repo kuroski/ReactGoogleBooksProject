@@ -11,6 +11,7 @@ class Pagination extends Component {
     super(props)
 
     this.currentPageClass = this.currentPageClass.bind(this)
+    this.changePage = this.changePage.bind(this)
   }
 
   currentPageClass(index) {
@@ -18,12 +19,17 @@ class Pagination extends Component {
     return 'c-pagination__page--current'
   }
 
+  changePage(index) {
+    if(index === this.props.currentPage) return
+    this.props.onPageChange(index)
+  }
+
   render() {
     return (
       <div className="c-pagination">
         {[...Array(this.props.pageCount).keys()]
           .map((index) => {
-            return <div key={index} className={`c-pagination__page ${this.currentPageClass(index)}`}>{index}</div>
+            return <button key={index} onClick={() => this.changePage(index)} className={`c-pagination__page ${this.currentPageClass(index)}`}>{index}</button>
           })}
       </div>
     )
