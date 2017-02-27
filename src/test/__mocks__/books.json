@@ -1,6 +1,6 @@
 {
     "kind": "books#volumes",
-    "totalItems": 521,
+    "totalItems": 487,
     "items": [
         {
             "kind": "books#volume",
