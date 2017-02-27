@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 
 const propTypes = {
-  books: React.PropTypes.array.isRequired
+  books: React.PropTypes.array.isRequired,
+  onFavorite: React.PropTypes.func.isRequired
 }
 
 class BookShelf extends Component {
@@ -9,7 +10,12 @@ class BookShelf extends Component {
     return this.props.books.length ? (
       <ul className="BookShelf">
         {this.props.books.map((item, index) => {
-          return <li key={index}>{item.volumeInfo.title}</li>
+          return (
+            <li className="c-book" key={index}>
+              {item.volumeInfo.title}
+              <button className="c-book__favorite">Favorite</button>
+            </li>
+          )
         })}
       </ul>
     ) : null

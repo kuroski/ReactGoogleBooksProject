@@ -19,6 +19,7 @@ class BookStore extends Component {
     this.executeBookSearch = this.executeBookSearch.bind(this)
     this.executePageChange = this.executePageChange.bind(this)
     this.searchAllBooks = this.searchAllBooks.bind(this)
+    this.executeFavoriteBook = this.executeFavoriteBook.bind(this)
   }
 
   executeBookSearch(term) {
@@ -49,12 +50,14 @@ class BookStore extends Component {
       })
   }
 
+  executeFavoriteBook(bookId) {}
+
   render() {
     return (
       <div className="BookStore">
         <div>{this.state.message}</div>
         <SearchForm onSubmit={this.executeBookSearch} />
-        <BookShelf books={this.state.books} />
+        <BookShelf onFavorite={this.executeFavoriteBook} books={this.state.books} />
         <Pagination currentPage={this.state.currentPage} pageCount={this.state.pageCount} onPageChange={this.executePageChange} />
       </div>
     )

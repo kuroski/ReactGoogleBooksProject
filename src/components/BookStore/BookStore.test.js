@@ -26,9 +26,10 @@ describe('BookStore', () => {
     const wrapper = shallow(<BookStore />)
     const executeBookSearch = wrapper.instance().executeBookSearch
     const executePageChange = wrapper.instance().executePageChange
+    const executeFavoriteBook = wrapper.instance().executeFavoriteBook
     expect(wrapper.containsAllMatchingElements([
       <SearchForm onSubmit={executeBookSearch} />,
-      <BookShelf books={[]} />,
+      <BookShelf onFavorite={executeFavoriteBook} books={[]} />,
       <Pagination currentPage={0} pageCount={0} onPageChange={executePageChange} />
     ])).toEqual(true)
   })
