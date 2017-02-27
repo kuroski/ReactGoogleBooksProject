@@ -8,7 +8,21 @@ export function all(term, page = 0) {
             q: term,
             maxResults: 10,
             startIndex: page
-        }).then(result => {
+        })
+        .then(result => {
             return result.body
-        }).catch(error => {})
+        })
+        .catch(error => {
+            throw new Error(error)
+        })
+}
+
+export function find(bookId) {
+    return request.get(`${API_URL}/volumes/${bookId}`)
+        .then(result => {
+            return result.body
+        })
+        .catch(error => {
+            throw new Error(error)
+        })
 }

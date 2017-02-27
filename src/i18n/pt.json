@@ -1,3 +1,4 @@
 {
-  "app.errors.nosearchtermprovided": "Nenhum termo de pesquisa foi digitado"
+  "app.errors.nosearchtermprovided": "Nenhum termo de pesquisa foi digitado",
+  "app.errors.booknotfound": "Nenhum livro foi encontrado"
 }

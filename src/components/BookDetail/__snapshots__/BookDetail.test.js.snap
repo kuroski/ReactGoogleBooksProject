@@ -1,6 +1,7 @@
 exports[`Book renders correctly 1`] = `
 <div>
+  
   Hello Book Detail 
-  123
+  K_yxDAAAQBAJ
 </div>
 `;
