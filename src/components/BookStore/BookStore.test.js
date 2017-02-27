@@ -33,9 +33,10 @@ describe('BookStore', () => {
     const executeBookSearch = wrapper.instance().executeBookSearch
     const executePageChange = wrapper.instance().executePageChange
     const executeFavoriteBook = wrapper.instance().executeFavoriteBook
+    const isOnFavorite = wrapper.instance().isOnFavorite
     expect(wrapper.containsAllMatchingElements([
       <SearchForm onSubmit={executeBookSearch} />,
-      <BookShelf onFavorite={executeFavoriteBook} books={[]} />,
+      <BookShelf onFavorite={executeFavoriteBook} isOnFavorite={isOnFavorite} books={[]} />,
       <Pagination currentPage={0} pageCount={0} onPageChange={executePageChange} />
     ])).toEqual(true)
   })
@@ -156,5 +157,12 @@ describe('BookStore', () => {
     expect(window.localStorage).toBeDefined()
     expect(window.localStorage.getItem('favoritedBooks')).toBeDefined()
     expect(window.localStorage.getItem('favoritedBooks')[0]).toEqual(bookId)
+  })
+
+  it('passes isOnFavorite to BookShelf component', () => {
+    const wrapper = shallow(<BookStore />)
+    const bookShelf = wrapper.find(BookShelf)
+    const isOnFavorite = wrapper.instance().isOnFavorite
+    expect(bookShelf.prop('isOnFavorite')).toEqual(isOnFavorite)
   })
 })

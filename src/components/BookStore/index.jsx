@@ -20,6 +20,7 @@ class BookStore extends Component {
     this.executePageChange = this.executePageChange.bind(this)
     this.searchAllBooks = this.searchAllBooks.bind(this)
     this.executeFavoriteBook = this.executeFavoriteBook.bind(this)
+    this.isOnFavorite = this.isOnFavorite.bind(this)
   }
 
   executeBookSearch(term) {
@@ -54,12 +55,14 @@ class BookStore extends Component {
     window.localStorage.setItem('favoritedBooks', [bookId])
   }
 
+  isOnFavorite(bookId) {}
+
   render() {
     return (
       <div className="BookStore">
         <div>{this.state.message}</div>
         <SearchForm onSubmit={this.executeBookSearch} />
-        <BookShelf onFavorite={this.executeFavoriteBook} books={this.state.books} />
+        <BookShelf onFavorite={this.executeFavoriteBook} isOnFavorite={this.isOnFavorite} books={this.state.books} />
         <Pagination currentPage={this.state.currentPage} pageCount={this.state.pageCount} onPageChange={this.executePageChange} />
       </div>
     )
