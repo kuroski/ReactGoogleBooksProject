@@ -44,4 +44,16 @@ describe('Book', () => {
     const wrapper = mountWithIntl(<BookDetail params={{bookId: '123'}} />)
     // expect(wrapper.state('message').props.id).toEqual('app.errors.booknotfound')
   })
+
+  it('renders the book', () => {
+    nock(API_URL)
+      .get(HARRY_POTTER_GET_URL)
+      .reply(200, bookJson)
+
+    const wrapper = shallow(<BookDetail params={{bookId: bookJson.id}} />)
+    wrapper.instance().executeBookSearch(bookJson.id).then(book => {
+      expect(wrapper.state('book').volumeInfo.title).toEqual(book.volumeInfo.title)
+      expect(wrapper.find(book.volumeInfo.title)).toEqual(bookJson.volumeInfo.title)
+    })
+  })
 })

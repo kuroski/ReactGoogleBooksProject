@@ -15,6 +15,7 @@ class BookDetail extends Component {
     }
 
     this.executeBookSearch = this.executeBookSearch.bind(this)
+    this.renderBookDetail = this.renderBookDetail.bind(this)
   }
 
   componentWillMount() {
@@ -23,7 +24,10 @@ class BookDetail extends Component {
 
   executeBookSearch(bookId) {
     return booksApi.find(bookId)
-      .then(response => {
+      .then(book => {
+        this.setState({
+          book: book
+        })
       })
       .catch(error => {
         return this.setState({
@@ -32,13 +36,24 @@ class BookDetail extends Component {
       })
   }
 
-  render() {
-    return (
-      <div>
-        {this.state.message}
-        Hello Book Detail {this.props.params.bookId}
+  renderBookDetail() {
+    return <div>
+        {this.state.book.volumeInfo.title}
+        <img src={this.state.book.volumeInfo.imageLinks.thumbnail} alt={this.state.book.volumeInfo.title} />
       </div>
-    )
+  }
+
+  render() {
+    if(Object.keys(this.state.book).length) {
+      return this.renderBookDetail()
+    } else {
+      return (
+        <div>
+          {this.state.message}
+          {this.props.params.bookId}
+        </div>
+      )
+    }
   }
 }
 
