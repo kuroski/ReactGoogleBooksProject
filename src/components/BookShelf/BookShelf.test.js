@@ -33,4 +33,36 @@ describe('BookShelf', () => {
     const wrapper = shallow(<BookShelf onFavorite={() => ''} isOnFavorite={() => ''} books={booksJson.items} />)
     expect(wrapper.find(Book)).toHaveLength(2)
   })
+
+  it('passes bookId to Book component', () => {
+    const wrapper = mount(<BookShelf onFavorite={() => ''} isOnFavorite={() => ''} books={booksJson.items} />)
+    const book = wrapper.find(Book).first()
+    expect(book.prop('bookId')).toEqual(booksJson.items[0].id)
+  })
+
+  it('passes index to Book component', () => {
+    const wrapper = mount(<BookShelf onFavorite={() => ''} isOnFavorite={() => ''} books={booksJson.items} />)
+    const book = wrapper.find(Book).first()
+    expect(book.prop('index')).toEqual(0)
+  })
+
+  it('passes title to Book component', () => {
+    const wrapper = mount(<BookShelf onFavorite={() => ''} isOnFavorite={() => ''} books={booksJson.items} />)
+    const book = wrapper.find(Book).first()
+    expect(book.prop('title')).toEqual(booksJson.items[0].volumeInfo.title)
+  })
+
+  it('passes onFavorite to Book component', () => {
+    const wrapper = mount(<BookShelf onFavorite={() => ''} isOnFavorite={() => ''} books={booksJson.items} />)
+    const book = wrapper.find(Book).first()
+    const onFavorite = wrapper.prop('onFavorite')
+    expect(book.prop('onFavorite')).toEqual(onFavorite)
+  })
+
+  it('passes isOnFavorite to Book component', () => {
+    const wrapper = mount(<BookShelf onFavorite={() => ''} isOnFavorite={() => ''} books={booksJson.items} />)
+    const book = wrapper.find(Book).first()
+    const isOnFavorite = wrapper.prop('isOnFavorite')
+    expect(book.prop('isOnFavorite')).toEqual(isOnFavorite)
+  })
 })
