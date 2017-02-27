@@ -50,7 +50,9 @@ class BookStore extends Component {
       })
   }
 
-  executeFavoriteBook(bookId) {}
+  executeFavoriteBook(bookId) {
+    window.localStorage.setItem('favoritedBooks', [bookId])
+  }
 
   render() {
     return (

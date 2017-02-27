@@ -29,6 +29,9 @@
     "extends": "react-app"
   },
   "jest": {
+    "globals": {
+      "widow": true
+    },
     "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js"
   }
 }

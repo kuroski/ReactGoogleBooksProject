@@ -8,7 +8,7 @@
 import React from 'react';
 import { IntlProvider, intlShape } from 'react-intl';
 import { mount, shallow } from 'enzyme';
-import messages from '../i18n/pt.json'
+import messages from '../../i18n/pt.json'
 
 // Create the IntlProvider to retrieve context for wrapping around.
 const intlProvider = new IntlProvider({ locale: 'pt', messages }, {});

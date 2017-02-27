@@ -5,14 +5,20 @@ import BookShelf from '../BookShelf'
 import Pagination from '../Pagination'
 import renderer from 'react-test-renderer'
 import {shallow, mount} from 'enzyme'
-import {shallowWithIntl} from '../../helpers/intl-enzyme-test-helper'
+import {shallowWithIntl} from '../../test/helpers/intl-enzyme-test-helper'
 import booksJson from '../../test/__mocks__/books.json'
 import nock from 'nock'
 import {API_URL, BOOKS_PER_PAGE, HARRY_POTTER_URL, HARRY_POTTER_URL_SECOND_PAGE} from '../../test/__mocks__/constants'
+import localStorageMock from '../../test/__mocks__/localStorage'
 
 describe('BookStore', () => {
+  beforeEach(() => {
+    window.localStorage = localStorageMock
+  })
+
   afterEach(() => {
       nock.cleanAll()
+      window.localStorage.clear()
   })
 
   it('renders correctly', () => {
@@ -133,5 +139,22 @@ describe('BookStore', () => {
       .catch(error => {
         expect(error).toEqual(error)
       })
+  })
+
+  it('passes onFavorite to BookShelf component', () => {
+    const wrapper = shallow(<BookStore />)
+    const bookShelf = wrapper.find(BookShelf)
+    const executeFavoriteBook = wrapper.instance().executeFavoriteBook
+    expect(bookShelf.prop('onFavorite')).toEqual(executeFavoriteBook)
+  })
+
+  it('passes a bound onFavorite to BookShelf component', () => {
+    const bookId = 'K_yxDAAAQBAJ'
+    const wrapper = shallow(<BookStore />)
+    const bookShelf = wrapper.find(BookShelf)
+    bookShelf.prop('onFavorite')(bookId)
+    expect(window.localStorage).toBeDefined()
+    expect(window.localStorage.getItem('favoritedBooks')).toBeDefined()
+    expect(window.localStorage.getItem('favoritedBooks')[0]).toEqual(bookId)
   })
 })
