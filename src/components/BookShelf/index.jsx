@@ -6,6 +6,15 @@ const propTypes = {
 }
 
 class BookShelf extends Component {
+  constructor(props) {
+    super(props)
+    this.favoriteBook = this.favoriteBook.bind(this)
+  }
+
+  favoriteBook(bookId) {
+    this.props.onFavorite(bookId)
+  }
+
   render() {
     return this.props.books.length ? (
       <ul className="BookShelf">
@@ -13,7 +22,9 @@ class BookShelf extends Component {
           return (
             <li className="c-book" key={index}>
               {item.volumeInfo.title}
-              <button className="c-book__favorite">Favorite</button>
+              <button onClick={() => this.favoriteBook(item.id)} className="c-book__favorite">
+                Favorite
+              </button>
             </li>
           )
         })}
