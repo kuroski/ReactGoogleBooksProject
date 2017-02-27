@@ -52,11 +52,15 @@ class BookStore extends Component {
   }
 
   executeFavoriteBook(bookId) {
-    return window.localStorage.setItem('favoritedBooks', [bookId])
+    if(!window.localStorage.getItem('favoritedBooks')) window.localStorage.setItem('favoritedBooks', JSON.stringify([]))
+    const favoritedBooks = JSON.parse(window.localStorage.getItem('favoritedBooks'))
+    const newFavoritedBooks = [].concat(favoritedBooks).concat([bookId])
+    return window.localStorage.setItem('favoritedBooks', JSON.stringify(newFavoritedBooks))
   }
 
   isOnFavorite(bookId) {
-    const favoritedBooks = window.localStorage.getItem('favoritedBooks')
+    if(!window.localStorage.getItem('favoritedBooks')) return false
+    const favoritedBooks = JSON.parse(window.localStorage.getItem('favoritedBooks'))
     return (favoritedBooks.find(entity => entity === bookId)) ? true : false
   }
 

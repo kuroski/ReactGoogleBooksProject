@@ -156,7 +156,7 @@ describe('BookStore', () => {
     bookShelf.prop('onFavorite')(bookId)
     expect(window.localStorage).toBeDefined()
     expect(window.localStorage.getItem('favoritedBooks')).toBeDefined()
-    expect(window.localStorage.getItem('favoritedBooks')[0]).toEqual(bookId)
+    expect(JSON.parse(window.localStorage.getItem('favoritedBooks'))[0]).toEqual(bookId)
   })
 
   it('passes isOnFavorite to BookShelf component', () => {
@@ -168,11 +168,42 @@ describe('BookStore', () => {
 
   it('passes a bound isOnFavorite to BookShelf component', () => {
     const bookId = 'K_yxDAAAQBAJ'
-    window.localStorage.setItem('favoritedBooks', [bookId])
+    window.localStorage.setItem('favoritedBooks', JSON.stringify([bookId]))
     const wrapper = shallow(<BookStore />)
     const bookShelf = wrapper.find(BookShelf)
     const isOnFavorite = bookShelf.prop('isOnFavorite')(bookId)
-    expect(window.localStorage.getItem('favoritedBooks')[0]).toEqual(bookId)
+    expect(JSON.parse(window.localStorage.getItem('favoritedBooks'))[0]).toEqual(bookId)
     expect(isOnFavorite).toBe(true)
+  })
+
+  it('should validate favoritedBooks on execute isOnFavorite', () => {
+    const bookId = 'K_yxDAAAQBAJ'
+    const wrapper = shallow(<BookStore />)
+    const bookShelf = wrapper.find(BookShelf)
+    const isOnFavorite = bookShelf.prop('isOnFavorite')(bookId)
+    expect(window.localStorage.getItem('favoritedBooks')).toBeUndefined()
+    expect(isOnFavorite).toBe(false)
+  })
+
+  it('should validate favoritedBooks on execute onFavorite', () => {
+    const bookId = 'K_yxDAAAQBAJ'
+    const wrapper = shallow(<BookStore />)
+    const bookShelf = wrapper.find(BookShelf)
+    bookShelf.prop('onFavorite')(bookId)
+    expect(window.localStorage.getItem('favoritedBooks')).toBeDefined()
+    expect(JSON.parse(window.localStorage.getItem('favoritedBooks'))[0]).toEqual(bookId)
+  })
+
+  it('should favoritedBooks localstorage be an array of books', () => {
+    const bookId = 'K_yxDAAAQBAJ'
+    const bookId2 = 'abYKXvCwEToC'
+    const wrapper = shallow(<BookStore />)
+    const bookShelf = wrapper.find(BookShelf)
+    bookShelf.prop('onFavorite')(bookId)
+    bookShelf.prop('onFavorite')(bookId2)
+    const favoritedBooks = JSON.parse(window.localStorage.getItem('favoritedBooks'))
+    expect(window.localStorage.getItem('favoritedBooks')).toBeDefined()
+    expect(favoritedBooks[0]).toEqual(bookId)
+    expect(favoritedBooks[1]).toEqual(bookId2)
   })
 })
