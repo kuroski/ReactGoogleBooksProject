@@ -1,0 +1,93 @@
+{
+  "kind": "books#volume",
+  "id": "K_yxDAAAQBAJ",
+  "etag": "cOiPF+CpAWM",
+  "selfLink": "https://www.googleapis.com/books/v1/volumes/K_yxDAAAQBAJ",
+  "volumeInfo": {
+    "title": "Harry Potter E A Pedra Filosofal",
+    "authors": [
+      "Plínio Maurício"
+    ],
+    "publisher": "Clube de Autores",
+    "publishedDate": "2016-07-19",
+    "description": "Harry Potter e a Pedra Filosofal",
+    "industryIdentifiers": [{
+      "type": "OTHER",
+      "identifier": "PKEY:90211788"
+    }],
+    "readingModes": {
+      "text": false,
+      "image": true
+    },
+    "pageCount": 178,
+    "printedPageCount": 178,
+    "printType": "BOOK",
+    "categories": [
+      "Literary Collections / General",
+      "Fiction / General",
+      "Juvenile Fiction / General"
+    ],
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": true,
+    "contentVersion": "0.5.0.0.preview.1",
+    "panelizationSummary": {
+      "containsEpubBubbles": false,
+      "containsImageBubbles": false
+    },
+    "imageLinks": {
+      "smallThumbnail": "http://books.google.com/books/content?id=K_yxDAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&imgtk=AFLRE709hwd7fwnVV9Vni9GaK-NH0UM3NfLsJb7zXDxsFNG9NxBSV3AvXLN17P8jO6GMpUqi-Epe3jG8G6LVICl3bVndH1ug73-bporxYK4gQBGVPp_N_plMsUd_RVCl26hPzRLWELrx&source=gbs_api",
+      "thumbnail": "http://books.google.com/books/content?id=K_yxDAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&imgtk=AFLRE733MUUNjDj9sfA7LZ8gGG2cVDola2-uGErl301eQvqN6q8uxpZxkrSTkQ5V1smF6ZHSUHL1V_IZQuhhLEwxNeh72xAWR8J4to4QY-K5i95qblr86QAjdGKMoT2IrvY-1ZnRiBQk&source=gbs_api",
+      "small": "http://books.google.com/books/content?id=K_yxDAAAQBAJ&printsec=frontcover&img=1&zoom=2&edge=curl&imgtk=AFLRE71pc2eF3DhqIxufDyQGCf1gYruPLgVU7_GWkeu5uUDakFJX6tC6YmMQ7o3ovc7-gZgaqp0HrCC8cKOeXtG8Ajr80JKQh0mUHvxLf2k-dNE66HsbnbJQ9P3Ag2KBNofLbh_UeBNw&source=gbs_api",
+      "medium": "http://books.google.com/books/content?id=K_yxDAAAQBAJ&printsec=frontcover&img=1&zoom=3&edge=curl&imgtk=AFLRE71g3ptbHhg5LhxB5gVjiZVvn1XSOXsRI4Xl_fR-_r9QX4q7bi7TMCg_blvs07NHnr5lzjiVBHneBTBuzsIz7_V7C_K0IAZtudRQmS2PqQ9cuFu4tlJwB-LxcBuoh1p9ueHg_OfC&source=gbs_api",
+      "large": "http://books.google.com/books/content?id=K_yxDAAAQBAJ&printsec=frontcover&img=1&zoom=4&edge=curl&imgtk=AFLRE73ON-_37vfTxJfC5QjREZQx71uJ5Jd9sBLK2_2WeTYRJmWw358Jue00Kp9DAKFDL0vMyMLyVDe-9YCfKWqol5YjjKUJt1_W5Z7jqEkMUX5xv_wWinvEo7DdsEwhCLV82WKN93lz&source=gbs_api",
+      "extraLarge": "http://books.google.com/books/content?id=K_yxDAAAQBAJ&printsec=frontcover&img=1&zoom=6&edge=curl&imgtk=AFLRE70kEUXiKHj60caDuvnzvqeObEH5Q6tHES5eXkAceQhCvDZbxbokjwYrYp8phCHogBPnfpIF9-qIPGD2ZDJtFFF58BVAX3UF_M3P6E31r1WCTOWvIn8DlL4jP9vKl3ydcPMf2MAC&source=gbs_api"
+    },
+    "language": "pt",
+    "previewLink": "http://books.google.com.br/books?id=K_yxDAAAQBAJ&hl=&source=gbs_api",
+    "infoLink": "https://play.google.com/store/books/details?id=K_yxDAAAQBAJ&source=gbs_api",
+    "canonicalVolumeLink": "https://market.android.com/details?id=book-K_yxDAAAQBAJ"
+  },
+  "saleInfo": {
+    "country": "BR",
+    "saleability": "FOR_SALE",
+    "isEbook": true,
+    "listPrice": {
+      "amount": 10.0,
+      "currencyCode": "BRL"
+    },
+    "retailPrice": {
+      "amount": 10.0,
+      "currencyCode": "BRL"
+    },
+    "buyLink": "https://play.google.com/store/books/details?id=K_yxDAAAQBAJ&rdid=book-K_yxDAAAQBAJ&rdot=1&source=gbs_api",
+    "offers": [{
+      "finskyOfferType": 1,
+      "listPrice": {
+        "amountInMicros": 1.0E7,
+        "currencyCode": "BRL"
+      },
+      "retailPrice": {
+        "amountInMicros": 1.0E7,
+        "currencyCode": "BRL"
+      },
+      "giftable": true
+    }]
+  },
+  "accessInfo": {
+    "country": "BR",
+    "viewability": "PARTIAL",
+    "embeddable": true,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED",
+    "epub": {
+      "isAvailable": false
+    },
+    "pdf": {
+      "isAvailable": true,
+      "acsTokenLink": "http://books.google.com.br/books/download/Harry_Potter_E_A_Pedra_Filosofal-sample-pdf.acsm?id=K_yxDAAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+    },
+    "webReaderLink": "http://books.google.com.br/books/reader?id=K_yxDAAAQBAJ&hl=&printsec=frontcover&output=reader&source=gbs_api",
+    "accessViewStatus": "SAMPLE",
+    "quoteSharingAllowed": false
+  }
+}

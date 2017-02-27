@@ -14,7 +14,7 @@ const router = (
         <Router history={browserHistory}>
             <Route path="/" component={App}>
                 <IndexRoute component={BookStore} />
-                <Route path="/:id" component={BookDetail} />
+                <Route path="/:bookId" component={BookDetail} />
                 <Route path="*" component={BookStore}/>
             </Route>
         </Router>

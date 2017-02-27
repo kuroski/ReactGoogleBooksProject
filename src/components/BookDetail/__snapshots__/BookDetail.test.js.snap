@@ -1,5 +1,6 @@
 exports[`Book renders correctly 1`] = `
 <div>
-  Hello Book Detail
+  Hello Book Detail 
+  123
 </div>
 `;
