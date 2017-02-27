@@ -30,10 +30,10 @@ describe('BookShelf', () => {
     const wrapper = shallow(<BookShelf onFavorite={onFavoriteBookSpy} isOnFavorite={() => ''} books={booksJson.items} />)
     const firstFavoriteButton = wrapper.find('.c-book__favorite').first()
 
-    firstFavoriteButton.simulate('click', firstBookId)
+    firstFavoriteButton.simulate('click', firstBookId, 0)
 
     expect(onFavoriteBookSpy).toHaveBeenCalledTimes(1)
-    expect(onFavoriteBookSpy).toHaveBeenCalledWith(firstBookId)
+    expect(onFavoriteBookSpy).toHaveBeenCalledWith(firstBookId, 0)
   })
 
   it('should call isOnFavorite when looping through books', () => {

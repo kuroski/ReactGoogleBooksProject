@@ -153,7 +153,8 @@ describe('BookStore', () => {
     const bookId = 'K_yxDAAAQBAJ'
     const wrapper = shallow(<BookStore />)
     const bookShelf = wrapper.find(BookShelf)
-    bookShelf.prop('onFavorite')(bookId)
+    wrapper.setState({'books': [{}]})
+    bookShelf.prop('onFavorite')(bookId, 0)
     expect(window.localStorage).toBeDefined()
     expect(window.localStorage.getItem('favoritedBooks')).toBeDefined()
     expect(JSON.parse(window.localStorage.getItem('favoritedBooks'))[0]).toEqual(bookId)
@@ -189,7 +190,8 @@ describe('BookStore', () => {
     const bookId = 'K_yxDAAAQBAJ'
     const wrapper = shallow(<BookStore />)
     const bookShelf = wrapper.find(BookShelf)
-    bookShelf.prop('onFavorite')(bookId)
+    wrapper.setState({'books': [{}]})
+    bookShelf.prop('onFavorite')(bookId, 0)
     expect(window.localStorage.getItem('favoritedBooks')).toBeDefined()
     expect(JSON.parse(window.localStorage.getItem('favoritedBooks'))[0]).toEqual(bookId)
   })
@@ -199,11 +201,22 @@ describe('BookStore', () => {
     const bookId2 = 'abYKXvCwEToC'
     const wrapper = shallow(<BookStore />)
     const bookShelf = wrapper.find(BookShelf)
-    bookShelf.prop('onFavorite')(bookId)
-    bookShelf.prop('onFavorite')(bookId2)
+    wrapper.setState({'books': [{}]})
+    bookShelf.prop('onFavorite')(bookId, 0)
+    bookShelf.prop('onFavorite')(bookId2, 0)
     const favoritedBooks = JSON.parse(window.localStorage.getItem('favoritedBooks'))
     expect(window.localStorage.getItem('favoritedBooks')).toBeDefined()
     expect(favoritedBooks[0]).toEqual(bookId)
     expect(favoritedBooks[1]).toEqual(bookId2)
+  })
+
+
+  it('should update BookShelf component when executeFavoriteBook is called', () => {
+    const wrapper = mount(<BookStore />)
+    wrapper.setState({'books': booksJson.items})
+    wrapper.instance().executeFavoriteBook(booksJson.items[0].id, 0)
+    wrapper.update()
+    const bookShelf = wrapper.find(BookShelf)
+    // expect(bookShelf.find('.c-book > .c-book__favorite').first()).toHaveLength(0)
   })
 })

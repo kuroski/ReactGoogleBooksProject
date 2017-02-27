@@ -13,8 +13,8 @@ class BookShelf extends Component {
     this.isOnFavorite = this.isOnFavorite.bind(this)
   }
 
-  favoriteBook(bookId) {
-    this.props.onFavorite(bookId)
+  favoriteBook(bookId, index) {
+    this.props.onFavorite(bookId, index)
   }
 
   isOnFavorite(bookId) {
@@ -33,7 +33,7 @@ class BookShelf extends Component {
     return (
       <li className="c-book" key={index}>
         {item.volumeInfo.title}
-        <button onClick={() => this.favoriteBook(item.id)} className='c-book__favorite'>
+        <button onClick={() => this.favoriteBook(item.id, index)} className='c-book__favorite'>
           Favorite
         </button>
       </li>
