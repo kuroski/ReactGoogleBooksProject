@@ -165,4 +165,14 @@ describe('BookStore', () => {
     const isOnFavorite = wrapper.instance().isOnFavorite
     expect(bookShelf.prop('isOnFavorite')).toEqual(isOnFavorite)
   })
+
+  it('passes a bound isOnFavorite to BookShelf component', () => {
+    const bookId = 'K_yxDAAAQBAJ'
+    window.localStorage.setItem('favoritedBooks', [bookId])
+    const wrapper = shallow(<BookStore />)
+    const bookShelf = wrapper.find(BookShelf)
+    const isOnFavorite = bookShelf.prop('isOnFavorite')(bookId)
+    expect(window.localStorage.getItem('favoritedBooks')[0]).toEqual(bookId)
+    expect(isOnFavorite).toBe(true)
+  })
 })
