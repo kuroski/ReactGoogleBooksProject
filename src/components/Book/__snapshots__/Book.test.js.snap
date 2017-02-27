@@ -1,4 +1,11 @@
 exports[`Book renders correctly 1`] = `
-<div
-  className="Book" />
+<li
+  className="c-book">
+  Harry Potter
+  <button
+    className="c-book__favorite"
+    onClick={[Function]}>
+    Favorite
+  </button>
+</li>
 `;
