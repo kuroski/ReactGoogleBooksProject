@@ -1,0 +1,5 @@
+exports[`Book renders correctly 1`] = `
+<div>
+  Hello Book Detail
+</div>
+`;
