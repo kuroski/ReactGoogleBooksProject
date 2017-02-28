@@ -21,6 +21,7 @@ class BookStore extends Component {
     this.searchAllBooks = this.searchAllBooks.bind(this)
     this.executeFavoriteBook = this.executeFavoriteBook.bind(this)
     this.isOnFavorite = this.isOnFavorite.bind(this)
+    this.toggleFavoritedBook = this.toggleFavoritedBook.bind(this)
   }
 
   executeBookSearch(term) {
@@ -54,12 +55,10 @@ class BookStore extends Component {
   executeFavoriteBook(bookId, index) {
     if(!window.localStorage.getItem('favoritedBooks')) window.localStorage.setItem('favoritedBooks', JSON.stringify([]))
 
-    const favoritedBooks = JSON.parse(window.localStorage.getItem('favoritedBooks'))
-    const newFavoritedBooks = [].concat(favoritedBooks).concat([bookId])
-    window.localStorage.setItem('favoritedBooks', JSON.stringify(newFavoritedBooks))
+    this.toggleFavoritedBook(bookId)
 
     const books = this.state.books
-    books[index]['isOnFavorite'] = true
+    books[index]['isOnFavorite'] = !books[index]['isOnFavorite']
     this.setState({
       books: books
     })
@@ -69,6 +68,19 @@ class BookStore extends Component {
     if(!window.localStorage.getItem('favoritedBooks')) return false
     const favoritedBooks = JSON.parse(window.localStorage.getItem('favoritedBooks'))
     return (favoritedBooks.find(entity => entity === bookId)) ? true : false
+  }
+
+  toggleFavoritedBook(bookId) {
+    let favoritedBooks = JSON.parse(window.localStorage.getItem('favoritedBooks'))
+    let newFavoritedBooks = []
+    if(favoritedBooks.indexOf(bookId) >= 0) {
+      newFavoritedBooks = favoritedBooks.filter(book => {
+        return book !== bookId
+      })
+    } else
+      newFavoritedBooks = [].concat(favoritedBooks).concat([bookId])
+
+    window.localStorage.setItem('favoritedBooks', JSON.stringify(newFavoritedBooks))
   }
 
   render() {

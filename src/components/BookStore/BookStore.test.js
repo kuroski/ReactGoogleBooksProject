@@ -196,6 +196,19 @@ describe('BookStore', () => {
     expect(JSON.parse(window.localStorage.getItem('favoritedBooks'))[0]).toEqual(bookId)
   })
 
+  it('should toogle favoritedBooks on execute toggleFavorite', () => {
+    const bookId = 'K_yxDAAAQBAJ'
+    const wrapper = shallow(<BookStore />)
+    const bookShelf = wrapper.find(BookShelf)
+    wrapper.setState({'books': [{}]})
+    bookShelf.prop('toggleFavorite')(bookId, 0)
+    expect(window.localStorage.getItem('favoritedBooks')).toBeDefined()
+    expect(JSON.parse(window.localStorage.getItem('favoritedBooks'))[0]).toEqual(bookId)
+
+    bookShelf.prop('toggleFavorite')(bookId, 0)
+    expect(JSON.parse(window.localStorage.getItem('favoritedBooks'))[0]).toBeUndefined()
+  })
+
   it('should favoritedBooks localstorage be an array of books', () => {
     const bookId = 'K_yxDAAAQBAJ'
     const bookId2 = 'abYKXvCwEToC'
