@@ -1,7 +1,11 @@
 exports[`Book renders correctly 1`] = `
 <li
   className="c-book">
-  Harry Potter
+  <span>
+    <span>
+      Harry Potter
+    </span>
+  </span>
   <a
     onClick={[Function]}
     style={Object {}}>

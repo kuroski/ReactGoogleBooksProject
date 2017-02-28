@@ -4,7 +4,8 @@ import Book from '../Book'
 const propTypes = {
   books: React.PropTypes.array.isRequired,
   onFavorite: React.PropTypes.func.isRequired,
-  isOnFavorite: React.PropTypes.func.isRequired
+  isOnFavorite: React.PropTypes.func.isRequired,
+  term: React.PropTypes.string
 }
 
 class BookShelf extends Component {
@@ -20,6 +21,7 @@ class BookShelf extends Component {
               title={item.volumeInfo.title}
               onFavorite={this.props.onFavorite}
               isOnFavorite={this.props.isOnFavorite}
+              term={this.props.term}
             />
           )
         })}

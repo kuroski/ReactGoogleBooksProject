@@ -1,9 +1,10 @@
 import React from 'react'
 import Book from './'
 import renderer from 'react-test-renderer'
-import {shallow} from 'enzyme'
+import {shallow, mount} from 'enzyme'
 import booksJson from '../../test/__mocks__/books.json'
 import {Link} from 'react-router'
+import Highlighter from 'react-highlight-words'
 
 describe('Book', () => {
   it('renders correctly', () => {
@@ -22,7 +23,8 @@ describe('Book', () => {
         index={0}
         title={firstBook.volumeInfo.title}
         onFavorite={onFavoriteBookSpy}
-        isOnFavorite={() => ''} />)
+        isOnFavorite={() => ''}
+        term="Harry Potter" />)
     const firstFavoriteButton = wrapper.find('.c-book__favorite').first()
 
     firstFavoriteButton.simulate('click', firstBook.id, 0)
@@ -33,7 +35,7 @@ describe('Book', () => {
 
   it('should check if the book is favorited', () => {
     const isOnFavorite = jest.fn()
-    const wrapper = shallow(<Book bookId="001" index={0} title="Harry Potter" onFavorite={() => ''} isOnFavorite={isOnFavorite} />)
+    const wrapper = shallow(<Book bookId="001" index={0} title="Harry Potter" onFavorite={() => ''} isOnFavorite={isOnFavorite} term="Harry Potter" />)
 
     expect(isOnFavorite).toHaveBeenCalledTimes(1)
     expect(isOnFavorite).toHaveBeenLastCalledWith(wrapper.instance().props.bookId)
@@ -41,16 +43,21 @@ describe('Book', () => {
 
   it('should hide the favorite button when the book is in favorites list', () => {
     const isOnFavorite = jest.fn().mockReturnValueOnce(true)
-    const wrapper = shallow(<Book bookId="001" index={0} title="Harry Potter" onFavorite={() => ''} isOnFavorite={isOnFavorite} />)
+    const wrapper = shallow(<Book bookId="001" index={0} title="Harry Potter" onFavorite={() => ''} isOnFavorite={isOnFavorite} term="Harry Potter" />)
 
     expect(wrapper.hasClass('c-book--favorited')).toBe(true)
     expect(wrapper.find('.c-book__favorite')).toHaveLength(0)
   })
 
   it('should render a link to book details', () => {
-    const wrapper = shallow(<Book bookId={booksJson.items[0].id} index={0} title="Harry Potter" onFavorite={() => ''} isOnFavorite={() => ''} />)
+    const wrapper = mount(<Book term="Harry Potter" bookId={booksJson.items[0].id} index={0} title="Harry Potter" onFavorite={() => ''} isOnFavorite={() => ''} />)
     expect(wrapper.containsAllMatchingElements([
-      <Link to={`/${booksJson.items[0].id}`}>Detail</Link>
+      <Link to={`/${booksJson.items[0].id}`}>Detail</Link>,
     ])).toEqual(true)
+  })
+
+  it('should highlight the searched word', () => {
+    const wrapper = mount(<Book term="Harry Potter" bookId={booksJson.items[0].id} index={0} title="Harry Potter e a Pedra Filosofal" onFavorite={() => ''} isOnFavorite={() => ''} />)
+    expect(wrapper.find('.Highlight')).toHaveLength(1)
   })
 })
