@@ -1,4 +1,11 @@
 import React, {Component, PropTypes} from 'react'
+import styled from 'styled-components'
+
+const Container = styled.form`
+    background-color: #6D7993;
+    padding: 1rem;
+    text-align: center;
+`;
 
 const propTypes = {
   onSubmit: PropTypes.func.isRequired
@@ -25,10 +32,10 @@ class SearchForm extends Component {
 
   render() {
     return (
-      <form className="SearchForm">
+      <Container>
         <input value={this.state.term} onChange={this.setTerm} />
         <button onClick={this.executeSearch}>Search</button>
-      </form>
+      </Container>
     )
   }
 }

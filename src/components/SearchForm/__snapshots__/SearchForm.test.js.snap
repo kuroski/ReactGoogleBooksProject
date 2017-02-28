@@ -1,6 +1,6 @@
 exports[`SearchForm renders correctly 1`] = `
 <form
-  className="SearchForm">
+  className="joMAAJ">
   <input
     onChange={[Function]}
     value="" />

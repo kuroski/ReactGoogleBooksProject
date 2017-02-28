@@ -5,7 +5,7 @@ exports[`BookStore renders correctly 1`] = `
     
   </div>
   <form
-    className="SearchForm">
+    className="joMAAJ">
     <input
       onChange={[Function]}
       value="" />
