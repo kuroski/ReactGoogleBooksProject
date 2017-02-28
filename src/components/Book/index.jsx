@@ -37,6 +37,9 @@ class Book extends Component {
           highlightClassName="Highlight"
         />
         <Link to={`/${this.props.bookId}`}>Detail</Link>
+        <button onClick={() => this.favoriteBook(this.props.bookId, this.props.index)} className='c-book__unfavorite'>
+          UNFavorite
+        </button>
       </li>
     )
   }

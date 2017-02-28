@@ -46,6 +46,16 @@ describe('Book', () => {
 
     expect(wrapper.hasClass('c-book--favorited')).toBe(true)
     expect(wrapper.find('.c-book__favorite')).toHaveLength(0)
+    expect(wrapper.find('.c-book__unfavorite')).toHaveLength(1)
+  })
+
+  it('should hide the unfavorite button when the book is not in the favorites list', () => {
+    const isOnFavorite = jest.fn().mockReturnValueOnce(false)
+    const wrapper = shallow(<Book bookId="001" index={0} title="Harry Potter" toggleFavorite={() => ''} isOnFavorite={isOnFavorite} term="Harry Potter" />)
+
+    expect(wrapper.hasClass('c-book--favorited')).toBe(false)
+    expect(wrapper.find('.c-book__favorite')).toHaveLength(1)
+    expect(wrapper.find('.c-book__unfavorite')).toHaveLength(0)
   })
 
   it('should render a link to book details', () => {
