@@ -1,8 +1,8 @@
 import React from 'react'
 import BookDetail from './'
 import renderer from 'react-test-renderer'
-import {shallow, mount} from 'enzyme'
-import {shallowWithIntl, mountWithIntl} from '../../test/helpers/intl-enzyme-test-helper'
+import {shallow} from 'enzyme'
+import {shallowWithIntl} from '../../test/helpers/intl-enzyme-test-helper'
 import bookJson from '../../test/__mocks__/book.json'
 import errorBookJson from '../../test/__mocks__/errorBook.json'
 import nock from 'nock'
@@ -42,8 +42,10 @@ describe('Book', () => {
       .get(HARRY_POTTER_GET_WRONG_URL)
       .replyWithError(errorBookJson)
 
-    const wrapper = mountWithIntl(<BookDetail params={{bookId: '123'}} />)
-    // expect(wrapper.state('message').props.id).toEqual('app.errors.booknotfound')
+    const wrapper = shallowWithIntl(<BookDetail params={{bookId: 123}} />)
+    wrapper.instance().executeBookSearch(123).then(result => {
+      expect(wrapper.state('message').props.id).toEqual('app.errors.booknotfound')
+    })
   })
 
   it('renders the book', () => {
