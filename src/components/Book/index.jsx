@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {Link} from 'react-router'
 
 const propTypes = {
   bookId: React.PropTypes.string.isRequired,
@@ -29,6 +30,7 @@ class Book extends Component {
     return (
       <li className="c-book c-book--favorited" key={this.props.index}>
         {this.props.title}
+        <Link to={`/${this.props.bookId}`}>Detail</Link>
       </li>
     )
   }
@@ -37,6 +39,7 @@ class Book extends Component {
     return (
       <li className="c-book" key={this.props.index}>
         {this.props.title}
+        <Link to={`/${this.props.bookId}`}>Detail</Link>
         <button onClick={() => this.favoriteBook(this.props.bookId, this.props.index)} className='c-book__favorite'>
           Favorite
         </button>

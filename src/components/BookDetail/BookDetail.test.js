@@ -7,6 +7,7 @@ import bookJson from '../../test/__mocks__/book.json'
 import errorBookJson from '../../test/__mocks__/errorBook.json'
 import nock from 'nock'
 import {API_URL, HARRY_POTTER_GET_URL, HARRY_POTTER_GET_WRONG_URL} from '../../test/__mocks__/constants'
+import {Link} from 'react-router'
 
 describe('Book', () => {
   afterEach(() => {
@@ -55,5 +56,12 @@ describe('Book', () => {
       expect(wrapper.state('book').volumeInfo.title).toEqual(book.volumeInfo.title)
       expect(wrapper.find(book.volumeInfo.title)).toEqual(bookJson.volumeInfo.title)
     })
+  })
+
+  it('should render a link to home screen', () => {
+    const wrapper = shallow(<BookDetail params={{bookId: bookJson.id}} />)
+    expect(wrapper.containsAllMatchingElements([
+      <Link to="/">Home</Link>
+    ])).toEqual(true)
   })
 })

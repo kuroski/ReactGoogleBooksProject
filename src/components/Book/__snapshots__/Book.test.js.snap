@@ -2,6 +2,11 @@ exports[`Book renders correctly 1`] = `
 <li
   className="c-book">
   Harry Potter
+  <a
+    onClick={[Function]}
+    style={Object {}}>
+    Detail
+  </a>
   <button
     className="c-book__favorite"
     onClick={[Function]}>

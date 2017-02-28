@@ -1,5 +1,10 @@
 exports[`Book renders correctly 1`] = `
 <div>
+  <a
+    onClick={[Function]}
+    style={Object {}}>
+    Home
+  </a>
   
   K_yxDAAAQBAJ
 </div>

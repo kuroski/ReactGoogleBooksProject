@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import * as booksApi from '../../api'
 import {FormattedMessage} from 'react-intl'
+import {Link} from 'react-router'
 
 const propTypes = {
   params: React.PropTypes.object.isRequired
@@ -25,7 +26,7 @@ class BookDetail extends Component {
   executeBookSearch(bookId) {
     return booksApi.find(bookId)
       .then(book => {
-        this.setState({
+        return this.setState({
           book: book
         })
       })
@@ -37,10 +38,13 @@ class BookDetail extends Component {
   }
 
   renderBookDetail() {
-    return <div>
+    return (
+      <div>
         {this.state.book.volumeInfo.title}
         <img src={this.state.book.volumeInfo.imageLinks.thumbnail} alt={this.state.book.volumeInfo.title} />
+        <Link to="/">Home</Link>
       </div>
+    )
   }
 
   render() {
@@ -49,6 +53,7 @@ class BookDetail extends Component {
     } else {
       return (
         <div>
+          <Link to="/">Home</Link>
           {this.state.message}
           {this.props.params.bookId}
         </div>

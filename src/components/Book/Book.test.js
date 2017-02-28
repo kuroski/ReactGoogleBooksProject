@@ -3,6 +3,7 @@ import Book from './'
 import renderer from 'react-test-renderer'
 import {shallow} from 'enzyme'
 import booksJson from '../../test/__mocks__/books.json'
+import {Link} from 'react-router'
 
 describe('Book', () => {
   it('renders correctly', () => {
@@ -44,5 +45,12 @@ describe('Book', () => {
 
     expect(wrapper.hasClass('c-book--favorited')).toBe(true)
     expect(wrapper.find('.c-book__favorite')).toHaveLength(0)
+  })
+
+  it('should render a link to book details', () => {
+    const wrapper = shallow(<Book bookId={booksJson.items[0].id} index={0} title="Harry Potter" onFavorite={() => ''} isOnFavorite={() => ''} />)
+    expect(wrapper.containsAllMatchingElements([
+      <Link to={`/${booksJson.items[0].id}`}>Detail</Link>
+    ])).toEqual(true)
   })
 })
