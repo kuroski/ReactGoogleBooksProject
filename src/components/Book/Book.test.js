@@ -32,6 +32,28 @@ describe('Book', () => {
     expect(onFavoriteBookSpy).toHaveBeenCalledWith(firstBook.id, 0)
   })
 
+  it('should call onFavoriteBook when unFavorite button is clicked', () => {
+    const onFavoriteBookSpy = jest.fn()
+    const firstBook = booksJson.items[0]
+    const wrapper = shallow(
+      <Book
+        bookId={firstBook.id}
+        index={0}
+        title={firstBook.volumeInfo.title}
+        toggleFavorite={onFavoriteBookSpy}
+        isOnFavorite={() => ''}
+        term="Harry Potter" />)
+    const firstFavoriteButton = wrapper.find('.c-book__favorite').first()
+    firstFavoriteButton.simulate('click', firstBook.id, 0)
+
+    wrapper.update()
+    const firstUnFavoriteButton = wrapper.find('.c-book__unfavorite').first()
+    firstUnFavoriteButton.simulate('click', firstBook.id, 0)
+
+    expect(onFavoriteBookSpy).toHaveBeenCalledTimes(1)
+    expect(onFavoriteBookSpy).toHaveBeenCalledWith(firstBook.id, 0)
+  })
+
   it('should check if the book is favorited', () => {
     const isOnFavorite = jest.fn()
     const wrapper = shallow(<Book bookId="001" index={0} title="Harry Potter" toggleFavorite={() => ''} isOnFavorite={isOnFavorite} term="Harry Potter" />)

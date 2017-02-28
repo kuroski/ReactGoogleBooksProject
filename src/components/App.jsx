@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 
 class App extends Component {
   componentWillMount() {
-    if(!window.localStorage.getItem('favoritedBooks')) 
+    if(!window.localStorage.getItem('favoritedBooks'))
       window.localStorage.setItem('favoritedBooks', JSON.stringify([]))
   }
 
