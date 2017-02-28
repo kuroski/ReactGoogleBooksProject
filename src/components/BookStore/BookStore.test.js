@@ -36,7 +36,7 @@ describe('BookStore', () => {
     const isOnFavorite = wrapper.instance().isOnFavorite
     expect(wrapper.containsAllMatchingElements([
       <SearchForm onSubmit={executeBookSearch} />,
-      <BookShelf onFavorite={executeFavoriteBook} isOnFavorite={isOnFavorite} books={[]} />,
+      <BookShelf toggleFavorite={executeFavoriteBook} isOnFavorite={isOnFavorite} books={[]} />,
       <Pagination currentPage={0} pageCount={0} onPageChange={executePageChange} />
     ])).toEqual(true)
   })
@@ -142,19 +142,19 @@ describe('BookStore', () => {
       })
   })
 
-  it('passes onFavorite to BookShelf component', () => {
+  it('passes toggleFavorite to BookShelf component', () => {
     const wrapper = shallow(<BookStore />)
     const bookShelf = wrapper.find(BookShelf)
     const executeFavoriteBook = wrapper.instance().executeFavoriteBook
-    expect(bookShelf.prop('onFavorite')).toEqual(executeFavoriteBook)
+    expect(bookShelf.prop('toggleFavorite')).toEqual(executeFavoriteBook)
   })
 
-  it('passes a bound onFavorite to BookShelf component', () => {
+  it('passes a bound toggleFavorite to BookShelf component', () => {
     const bookId = 'K_yxDAAAQBAJ'
     const wrapper = shallow(<BookStore />)
     const bookShelf = wrapper.find(BookShelf)
     wrapper.setState({'books': [{}]})
-    bookShelf.prop('onFavorite')(bookId, 0)
+    bookShelf.prop('toggleFavorite')(bookId, 0)
     expect(window.localStorage).toBeDefined()
     expect(window.localStorage.getItem('favoritedBooks')).toBeDefined()
     expect(JSON.parse(window.localStorage.getItem('favoritedBooks'))[0]).toEqual(bookId)
@@ -186,12 +186,12 @@ describe('BookStore', () => {
     expect(isOnFavorite).toBe(false)
   })
 
-  it('should validate favoritedBooks on execute onFavorite', () => {
+  it('should validate favoritedBooks on execute toggleFavorite', () => {
     const bookId = 'K_yxDAAAQBAJ'
     const wrapper = shallow(<BookStore />)
     const bookShelf = wrapper.find(BookShelf)
     wrapper.setState({'books': [{}]})
-    bookShelf.prop('onFavorite')(bookId, 0)
+    bookShelf.prop('toggleFavorite')(bookId, 0)
     expect(window.localStorage.getItem('favoritedBooks')).toBeDefined()
     expect(JSON.parse(window.localStorage.getItem('favoritedBooks'))[0]).toEqual(bookId)
   })
@@ -202,8 +202,8 @@ describe('BookStore', () => {
     const wrapper = shallow(<BookStore />)
     const bookShelf = wrapper.find(BookShelf)
     wrapper.setState({'books': [{}]})
-    bookShelf.prop('onFavorite')(bookId, 0)
-    bookShelf.prop('onFavorite')(bookId2, 0)
+    bookShelf.prop('toggleFavorite')(bookId, 0)
+    bookShelf.prop('toggleFavorite')(bookId2, 0)
     const favoritedBooks = JSON.parse(window.localStorage.getItem('favoritedBooks'))
     expect(window.localStorage.getItem('favoritedBooks')).toBeDefined()
     expect(favoritedBooks[0]).toEqual(bookId)

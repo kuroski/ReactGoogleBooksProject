@@ -76,7 +76,7 @@ class BookStore extends Component {
       <div className="BookStore">
         <div>{this.state.message}</div>
         <SearchForm onSubmit={this.executeBookSearch} />
-        <BookShelf onFavorite={this.executeFavoriteBook} isOnFavorite={this.isOnFavorite} books={this.state.books} term={this.state.currentSearchTerm} />
+        <BookShelf toggleFavorite={this.executeFavoriteBook} isOnFavorite={this.isOnFavorite} books={this.state.books} term={this.state.currentSearchTerm} />
         <Pagination currentPage={this.state.currentPage} pageCount={this.state.pageCount} onPageChange={this.executePageChange} />
       </div>
     )

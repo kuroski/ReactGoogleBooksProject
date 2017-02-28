@@ -6,7 +6,7 @@ const propTypes = {
   bookId: React.PropTypes.string.isRequired,
   index: React.PropTypes.number.isRequired,
   title: React.PropTypes.string.isRequired,
-  onFavorite: React.PropTypes.func.isRequired,
+  toggleFavorite: React.PropTypes.func.isRequired,
   isOnFavorite: React.PropTypes.func.isRequired,
   term: React.PropTypes.string
 }
@@ -25,7 +25,7 @@ class Book extends Component {
   }
 
   favoriteBook(bookId, index) {
-    this.props.onFavorite(bookId, index)
+    this.props.toggleFavorite(bookId, index)
   }
 
   renderFavoritedBook() {
