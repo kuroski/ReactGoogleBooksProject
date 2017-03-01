@@ -29,6 +29,9 @@ npm test
 
 // Irá abrir uma lista de opções
 // Selecionando a opção "a", irá ser executados todos os testes da aplicação
+
+// Caso você queira ver o coverage
+yarn|npm test -- --coverage
 ``` 
 
 ## Motivações/Outros
