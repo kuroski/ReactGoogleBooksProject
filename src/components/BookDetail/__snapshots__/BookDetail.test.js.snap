@@ -5,7 +5,5 @@ exports[`Book renders correctly 1`] = `
     style={Object {}}>
     Home
   </a>
-  
-  K_yxDAAAQBAJ
 </div>
 `;
