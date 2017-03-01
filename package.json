@@ -6,6 +6,7 @@
     "babel-plugin-react-intl": "^2.3.1",
     "enzyme": "^2.7.1",
     "enzyme-matchers": "^2.1.2",
+    "gh-pages": "^0.12.0",
     "jest-enzyme": "^2.1.2",
     "nock": "^9.0.7",
     "react-addons-test-utils": "^15.4.2",
@@ -28,7 +29,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -38,5 +41,6 @@
       "widow": true
     },
     "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js"
-  }
+  },
+  "homepage": "https://kuroski.github.io/ReactGoogleBooksProject"
 }
