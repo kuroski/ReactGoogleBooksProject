@@ -1,5 +1,12 @@
 import React, {Component} from 'react'
 import Book from '../Book'
+import styled from 'styled-components'
+
+const Container = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+`
 
 const propTypes = {
   books: React.PropTypes.array.isRequired,
@@ -11,7 +18,7 @@ const propTypes = {
 class BookShelf extends Component {
   render() {
     return this.props.books.length ? (
-      <ul className="BookShelf">
+      <Container>
         {this.props.books.map((item, index) => {
           return (
             <Book
@@ -19,13 +26,14 @@ class BookShelf extends Component {
               bookId={item.id}
               index={index}
               title={item.volumeInfo.title}
+              image={item.volumeInfo.imageLinks.thumbnail}
               toggleFavorite={this.props.toggleFavorite}
               isOnFavorite={this.props.isOnFavorite}
               term={this.props.term}
             />
           )
         })}
-      </ul>
+      </Container>
     ) : null
   }
 }

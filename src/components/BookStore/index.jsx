@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import SearchForm from '../SearchForm'
 import BookShelf from '../BookShelf'
 import Pagination from '../Pagination'
+import Message from './Message'
 import * as booksApi from '../../api'
 import {FormattedMessage} from 'react-intl'
 
@@ -86,7 +87,7 @@ class BookStore extends Component {
   render() {
     return (
       <div className="BookStore">
-        <div>{this.state.message}</div>
+        <Message>{this.state.message}</Message>
         <SearchForm onSubmit={this.executeBookSearch} />
         <BookShelf toggleFavorite={this.executeFavoriteBook} isOnFavorite={this.isOnFavorite} books={this.state.books} term={this.state.currentSearchTerm} />
         <Pagination currentPage={this.state.currentPage} pageCount={this.state.pageCount} onPageChange={this.executePageChange} />

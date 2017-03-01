@@ -28,7 +28,7 @@ describe('BookStore', () => {
     expect(BookStoreTree).toMatchSnapshot()
   })
 
-  it('should render a SearchForm a BookShelf and a Pagination', () => {
+  it('should render a SearchForm a BookShelf a Message and a Pagination', () => {
     const wrapper = shallow(<BookStore />)
     const executeBookSearch = wrapper.instance().executeBookSearch
     const executePageChange = wrapper.instance().executePageChange

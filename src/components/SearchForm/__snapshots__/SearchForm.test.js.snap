@@ -3,7 +3,7 @@ exports[`SearchForm renders correctly 1`] = `
   className="ceDFYc">
   <input
     autoFocus={true}
-    className="jxjnux"
+    className="fujdOh"
     onChange={[Function]}
     value="" />
   <button

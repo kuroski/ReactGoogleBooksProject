@@ -1,6 +1,9 @@
 exports[`Book renders correctly 1`] = `
-<li
-  className="c-book">
+<div
+  className="c-book  jKIEBW">
+  <img
+    alt="Harry Potter"
+    src="thumb.jpg" />
   <span>
     <span>
       Harry Potter
@@ -16,5 +19,5 @@ exports[`Book renders correctly 1`] = `
     onClick={[Function]}>
     Favorite
   </button>
-</li>
+</div>
 `;

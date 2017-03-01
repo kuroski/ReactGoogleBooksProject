@@ -5,6 +5,7 @@ const Input = styled.input`
     padding: .5rem 1rem;
     flex: 1;
     border: none;
+    outline: none;
     color: white;
     font-family: Roboto;
     font-size: 1.3rem;

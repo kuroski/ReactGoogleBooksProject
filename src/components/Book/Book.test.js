@@ -8,7 +8,7 @@ import {Link} from 'react-router'
 describe('Book', () => {
   it('renders correctly', () => {
     const BookTree = renderer.create(
-      <Book bookId="001" index={0} title="Harry Potter" toggleFavorite={() => ''} isOnFavorite={() => ''} />
+      <Book bookId="001" index={0} title="Harry Potter" image="thumb.jpg" toggleFavorite={() => ''} isOnFavorite={() => ''} />
     ).toJSON()
     expect(BookTree).toMatchSnapshot()
   })
@@ -21,6 +21,7 @@ describe('Book', () => {
         bookId={firstBook.id}
         index={0}
         title={firstBook.volumeInfo.title}
+        image={firstBook.volumeInfo.imageLinks.thumbnail}
         toggleFavorite={onFavoriteBookSpy}
         isOnFavorite={() => ''}
         term="Harry Potter" />)
@@ -40,6 +41,7 @@ describe('Book', () => {
         bookId={firstBook.id}
         index={0}
         title={firstBook.volumeInfo.title}
+        image={firstBook.volumeInfo.imageLinks.thumbnail}
         toggleFavorite={onFavoriteBookSpy}
         isOnFavorite={() => ''}
         term="Harry Potter" />)
@@ -56,7 +58,7 @@ describe('Book', () => {
 
   it('should check if the book is favorited', () => {
     const isOnFavorite = jest.fn()
-    const wrapper = shallow(<Book bookId="001" index={0} title="Harry Potter" toggleFavorite={() => ''} isOnFavorite={isOnFavorite} term="Harry Potter" />)
+    const wrapper = shallow(<Book bookId="001" index={0} title="Harry Potter" image="thumb.jpg" toggleFavorite={() => ''} isOnFavorite={isOnFavorite} term="Harry Potter" />)
 
     expect(isOnFavorite).toHaveBeenCalledTimes(1)
     expect(isOnFavorite).toHaveBeenLastCalledWith(wrapper.instance().props.bookId)
@@ -64,7 +66,7 @@ describe('Book', () => {
 
   it('should hide the favorite button when the book is in favorites list', () => {
     const isOnFavorite = jest.fn().mockReturnValueOnce(true)
-    const wrapper = shallow(<Book bookId="001" index={0} title="Harry Potter" toggleFavorite={() => ''} isOnFavorite={isOnFavorite} term="Harry Potter" />)
+    const wrapper = shallow(<Book bookId="001" index={0} title="Harry Potter" image="thumb.jpg" toggleFavorite={() => ''} isOnFavorite={isOnFavorite} term="Harry Potter" />)
 
     expect(wrapper.hasClass('c-book--favorited')).toBe(true)
     expect(wrapper.find('.c-book__favorite')).toHaveLength(0)
@@ -73,7 +75,7 @@ describe('Book', () => {
 
   it('should hide the unfavorite button when the book is not in the favorites list', () => {
     const isOnFavorite = jest.fn().mockReturnValueOnce(false)
-    const wrapper = shallow(<Book bookId="001" index={0} title="Harry Potter" toggleFavorite={() => ''} isOnFavorite={isOnFavorite} term="Harry Potter" />)
+    const wrapper = shallow(<Book bookId="001" index={0} title="Harry Potter" image="thumb.jpg" toggleFavorite={() => ''} isOnFavorite={isOnFavorite} term="Harry Potter" />)
 
     expect(wrapper.hasClass('c-book--favorited')).toBe(false)
     expect(wrapper.find('.c-book__favorite')).toHaveLength(1)
@@ -81,14 +83,14 @@ describe('Book', () => {
   })
 
   it('should render a link to book details', () => {
-    const wrapper = mount(<Book term="Harry Potter" bookId={booksJson.items[0].id} index={0} title="Harry Potter" toggleFavorite={() => ''} isOnFavorite={() => ''} />)
+    const wrapper = mount(<Book term="Harry Potter" bookId={booksJson.items[0].id} index={0} title="Harry Potter" image="thumb.jpg" toggleFavorite={() => ''} isOnFavorite={() => ''} />)
     expect(wrapper.containsAllMatchingElements([
       <Link to={`/${booksJson.items[0].id}`}>Detail</Link>,
     ])).toEqual(true)
   })
 
   it('should highlight the searched word', () => {
-    const wrapper = mount(<Book term="Harry Potter" bookId={booksJson.items[0].id} index={0} title="Harry Potter e a Pedra Filosofal" toggleFavorite={() => ''} isOnFavorite={() => ''} />)
+    const wrapper = mount(<Book term="Harry Potter" bookId={booksJson.items[0].id} index={0} title="Harry Potter e a Pedra Filosofal" image="thumb.jpg" toggleFavorite={() => ''} isOnFavorite={() => ''} />)
     expect(wrapper.find('.Highlight')).toHaveLength(1)
   })
 })

@@ -1,14 +1,15 @@
 exports[`BookStore renders correctly 1`] = `
 <div
   className="BookStore">
-  <div>
+  <div
+    className="jceLMJ">
     
   </div>
   <form
     className="ceDFYc">
     <input
       autoFocus={true}
-      className="jxjnux"
+      className="fujdOh"
       onChange={[Function]}
       value="" />
     <button

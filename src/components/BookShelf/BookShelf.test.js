@@ -19,7 +19,7 @@ describe('BookShelf', () => {
     const toggleFavorite = wrapper.prop('toggleFavorite')
     const isOnFavorite = wrapper.prop('isOnFavorite')
     expect(wrapper.containsAllMatchingElements([
-      <Book key={0} bookId={firstBook.id} index={0} title={firstBook.volumeInfo.title} toggleFavorite={toggleFavorite} isOnFavorite={isOnFavorite} term="Harry Potter" />
+      <Book key={0} bookId={firstBook.id} index={0} title={firstBook.volumeInfo.title} image={firstBook.volumeInfo.imageLinks.thumbnail} toggleFavorite={toggleFavorite} isOnFavorite={isOnFavorite} term="Harry Potter" />
     ])).toEqual(true)
   })
 
