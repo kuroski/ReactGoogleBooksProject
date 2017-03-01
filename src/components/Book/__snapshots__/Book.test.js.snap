@@ -1,23 +1,35 @@
 exports[`Book renders correctly 1`] = `
 <div
-  className="c-book  jKIEBW">
-  <img
-    alt="Harry Potter"
-    src="thumb.jpg" />
-  <span>
+  className="c-book  dyAsnX">
+  <div
+    className="RTdSn">
+    <img
+      alt="Harry Potter"
+      src="thumb.jpg" />
+    <button
+      className="c-book__favorite jCIGdr"
+      onClick={[Function]}>
+      <i
+        className="material-icons">
+        favorite_border
+      </i>
+    </button>
+  </div>
+  <div
+    className="bNAaIj">
     <span>
-      Harry Potter
+      <span>
+        Harry Potter
+      </span>
     </span>
-  </span>
-  <a
-    onClick={[Function]}
-    style={Object {}}>
-    Detail
-  </a>
-  <button
-    className="c-book__favorite"
-    onClick={[Function]}>
-    Favorite
-  </button>
+    <a
+      onClick={[Function]}
+      style={Object {}}>
+      <i
+        className="material-icons">
+        info_outline
+      </i>
+    </a>
+  </div>
 </div>
 `;

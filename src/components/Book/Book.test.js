@@ -85,7 +85,9 @@ describe('Book', () => {
   it('should render a link to book details', () => {
     const wrapper = mount(<Book term="Harry Potter" bookId={booksJson.items[0].id} index={0} title="Harry Potter" image="thumb.jpg" toggleFavorite={() => ''} isOnFavorite={() => ''} />)
     expect(wrapper.containsAllMatchingElements([
-      <Link to={`/${booksJson.items[0].id}`}>Detail</Link>,
+      <Link to={`/${booksJson.items[0].id}`}>
+        <i className="material-icons">info_outline</i>
+      </Link>,
     ])).toEqual(true)
   })
 
