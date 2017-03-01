@@ -1,5 +1,7 @@
 import React from 'react'
 import SearchForm from './'
+import Input from './Input'
+import Button from './Button'
 import renderer from 'react-test-renderer'
 import {shallow, mount} from 'enzyme'
 
@@ -14,8 +16,8 @@ describe('SearchForm', () => {
   it('should contain an input and a button', () => {
     const wrapper = shallow(<SearchForm onSubmit={() => ''} />)
     expect(wrapper.containsAllMatchingElements([
-      <input />,
-      <button>Search</button>
+      <Input />,
+      <Button><i className="material-icons">search</i></Button>
     ])).toEqual(true)
   })
 
@@ -33,7 +35,7 @@ describe('SearchForm', () => {
     const searchButtonSpy = jest.fn()
     const wrapper = shallow(<SearchForm onSubmit={searchButtonSpy} />)
     wrapper.setState({term: searchTerm})
-    const searchButton = wrapper.find('button')
+    const searchButton = wrapper.find(Button)
 
     searchButton.simulate('click', new Event('Form'))
 

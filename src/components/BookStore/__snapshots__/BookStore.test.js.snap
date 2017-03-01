@@ -5,13 +5,19 @@ exports[`BookStore renders correctly 1`] = `
     
   </div>
   <form
-    className="joMAAJ">
+    className="ceDFYc">
     <input
+      autoFocus={true}
+      className="jxjnux"
       onChange={[Function]}
       value="" />
     <button
+      className="jyNRcu"
       onClick={[Function]}>
-      Search
+      <i
+        className="material-icons">
+        search
+      </i>
     </button>
   </form>
   <div

@@ -1,10 +1,12 @@
 import React, {Component, PropTypes} from 'react'
 import styled from 'styled-components'
+import Input from './Input'
+import Button from './Button'
 
 const Container = styled.form`
-    background-color: #6D7993;
-    padding: 1rem;
-    text-align: center;
+  display: flex;
+  text-align: center;
+  position: relative;
 `;
 
 const propTypes = {
@@ -33,8 +35,10 @@ class SearchForm extends Component {
   render() {
     return (
       <Container>
-        <input value={this.state.term} onChange={this.setTerm} />
-        <button onClick={this.executeSearch}>Search</button>
+        <Input autoFocus value={this.state.term} onChange={this.setTerm} />
+        <Button onClick={this.executeSearch}>
+          <i className="material-icons">search</i>
+        </Button>
       </Container>
     )
   }
