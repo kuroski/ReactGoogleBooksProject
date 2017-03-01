@@ -26,6 +26,9 @@ yarn test
 
 // caso você utilize npm
 npm test
+
+// Irá abrir uma lista de opções
+// Selecionando a opção "a", irá ser executados todos os testes da aplicação
 ``` 
 
 ## Motivações/Outros
