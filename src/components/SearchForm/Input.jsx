@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const Input = styled.input`
-    background-color: #6D7993;
+    background-color: #212121;
     padding: .5rem 1rem;
     flex: 1;
     border: none;
