@@ -11,6 +11,7 @@ exports[`BookStore renders correctly 1`] = `
       autoFocus={true}
       className="fCQilL"
       onChange={[Function]}
+      placeholder="..."
       value="" />
     <button
       className="jyNRcu"
@@ -22,17 +23,17 @@ exports[`BookStore renders correctly 1`] = `
     </button>
   </form>
   <div
-    className="c-pagination dLOtxE">
+    className="dLOtxE">
     <ul
-      className={undefined}>
+      className="c-pagination">
       <li
-        className="previous disabled">
+        className="previous c-pagination__page--disabled">
         <a
           className={undefined}
           onClick={[Function]}
           onKeyPress={[Function]}
           tabIndex="0">
-          Previous
+          
         </a>
       </li>
       <li
@@ -42,7 +43,7 @@ exports[`BookStore renders correctly 1`] = `
           onClick={[Function]}
           onKeyPress={[Function]}
           tabIndex="0">
-          Next
+          
         </a>
       </li>
     </ul>

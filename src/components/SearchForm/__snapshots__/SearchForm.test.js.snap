@@ -5,6 +5,7 @@ exports[`SearchForm renders correctly 1`] = `
     autoFocus={true}
     className="fCQilL"
     onChange={[Function]}
+    placeholder="..."
     value="" />
   <button
     className="jyNRcu"
