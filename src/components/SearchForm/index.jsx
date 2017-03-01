@@ -35,7 +35,7 @@ class SearchForm extends Component {
   render() {
     return (
       <Container>
-        <Input autoFocus value={this.state.term} onChange={this.setTerm} />
+        <Input autoFocus value={this.state.term} onChange={this.setTerm} placeholder="..." />
         <Button onClick={this.executeSearch}>
           <i className="material-icons">search</i>
         </Button>

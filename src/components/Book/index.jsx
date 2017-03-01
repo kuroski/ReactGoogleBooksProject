@@ -13,6 +13,7 @@ const Container = styled.div`
 
 const ImageContainer = styled.div`
   position: relative;
+  min-width: 128px;
 `
 
 const BookInfoContainer = styled.div`

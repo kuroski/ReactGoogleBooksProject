@@ -14,9 +14,11 @@
   },
   "dependencies": {
     "react": "^15.4.2",
+    "react-addons-create-fragment": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-highlight-words": "^0.6.0",
     "react-intl": "^2.2.3",
+    "react-paginate": "^4.1.1",
     "react-router": "^3.0.2",
     "react-tap-event-plugin": "^2.0.1",
     "styled-components": "^1.4.3",

@@ -1,4 +1,13 @@
 import React, {Component} from 'react'
+import styled from 'styled-components'
+import ReactPaginate from 'react-paginate'
+
+const Container = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+`
 
 const propTypes = {
   currentPage: React.PropTypes.number.isRequired,
@@ -9,29 +18,31 @@ const propTypes = {
 class Pagination extends Component {
   constructor(props) {
     super(props)
-
-    this.currentPageClass = this.currentPageClass.bind(this)
     this.changePage = this.changePage.bind(this)
   }
 
-  currentPageClass(index) {
-    if(index !== this.props.currentPage) return ''
-    return 'c-pagination__page--current'
-  }
-
   changePage(index) {
-    if(index === this.props.currentPage) return
-    this.props.onPageChange(index)
+    if(index.selected === this.props.currentPage) return
+    this.props.onPageChange(index.selected)
+    window.scrollTo(0, 0)
   }
 
   render() {
     return (
-      <div className="c-pagination">
-        {[...Array(this.props.pageCount).keys()]
-          .map((index) => {
-            return <button key={index} onClick={() => this.changePage(index)} className={`c-pagination__page ${this.currentPageClass(index)}`}>{index}</button>
-          })}
-      </div>
+      <Container>
+        <ReactPaginate
+          containerClassName="c-pagination"
+          pageClassName="c-pagination__page"
+          pageCount={this.props.pageCount}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={5}
+          onPageChange={this.changePage}
+          activeClassName="c-pagination__page--current"
+          disabledClassName="c-pagination__page--disabled"
+          previousLabel=""
+          nextLabel=""
+        />
+      </Container>
     )
   }
 }

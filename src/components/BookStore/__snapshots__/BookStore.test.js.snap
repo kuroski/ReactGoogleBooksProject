@@ -2,14 +2,14 @@ exports[`BookStore renders correctly 1`] = `
 <div
   className="BookStore">
   <div
-    className="jceLMJ">
+    className="gIGYFc">
     
   </div>
   <form
     className="ceDFYc">
     <input
       autoFocus={true}
-      className="fujdOh"
+      className="fCQilL"
       onChange={[Function]}
       value="" />
     <button
@@ -22,6 +22,30 @@ exports[`BookStore renders correctly 1`] = `
     </button>
   </form>
   <div
-    className="c-pagination" />
+    className="c-pagination dLOtxE">
+    <ul
+      className={undefined}>
+      <li
+        className="previous disabled">
+        <a
+          className={undefined}
+          onClick={[Function]}
+          onKeyPress={[Function]}
+          tabIndex="0">
+          Previous
+        </a>
+      </li>
+      <li
+        className="next">
+        <a
+          className={undefined}
+          onClick={[Function]}
+          onKeyPress={[Function]}
+          tabIndex="0">
+          Next
+        </a>
+      </li>
+    </ul>
+  </div>
 </div>
 `;

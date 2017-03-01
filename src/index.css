@@ -7,3 +7,28 @@ body {
 .Highlight {
   background-color: #ffd54f;
 }
+
+.c-pagination {
+  margin: 0;
+  padding: .5rem 1rem;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.c-pagination__page {
+  cursor: pointer;
+}
+
+.c-pagination__page > a {
+  outline: none;
+}
+
+.c-pagination__page--current {
+  border-bottom: solid 2px #323232;
+}
+
+.c-pagination__page--disabled {
+}
